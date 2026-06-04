@@ -10,4 +10,6 @@
 *-bak
 *.kicad_prl
 *.lck
-.history
+
+# Ignore local history folders
+.history/
