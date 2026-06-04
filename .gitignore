@@ -4,3 +4,9 @@
 .vscode/launch.json
 .vscode/ipch
 .pio/
+
+# KiCad temporary and backup files
+*.bak
+*-bak
+*.kicad_prl
+*.lck
