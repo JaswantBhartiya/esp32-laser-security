@@ -648,7 +648,7 @@
         "uuid": "46dd9cca-a9f6-46c6-90d0-bd2585ef2119"
       }
     ],
-    "used_designators": "",
+    "used_designators": "Reset_button1,SW1,J1",
     "variants": []
   },
   "sheets": [
