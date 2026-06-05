@@ -14,20 +14,28 @@ A production-grade perimeter defense and security grid engineered for the **ESP3
 * **Hardware Interruption Reset:** Features an internal-pullup hardware polling engine on `GPIO 18` that allows a standard push-button or a simple jumper-wire touch shortcut to instantly silence alarms and re-arm the perimeter.
 <br>
 
-## 📂 Directory Structure Layout
+## 📂 Repository Structure
 ``` text
-esp32-laser-security/          
-├── .pio/                      
-├── assets/                    <-- Create this folder for your media 📸
-│   ├── system_schematic.png   <-- Your PCB circuit diagram/schematic image
-│   └── demo_preview.gif       <-- Your 5-second project demonstration GIF
-├── include/                   
-├── lib/                       
-├── src/                       
-│   └── main.cpp               
-├── .gitignore                 
-├── platformio.ini             
-└── README.md
+esp32-laser-security/
+├── assets/                          # Documentation media and images
+│   ├── circuit_schematic.png        # Exported electrical schematic diagram
+│   ├── pcb_3d_front.png             # 3D render view of the board front
+│   ├── pcb_3d_back.png              # 3D render view of the board back
+│   └── pcb_3d_isometric.png         # Angled 3D isometric board view
+├── esp32-laser-security-pcb/        # KiCad hardware design files
+│   ├── esp32-laser-security.kicad_sch   # Hardware schematic design
+│   ├── esp32-laser-security.kicad_pcb   # PCB layer routing layout
+│   ├── esp32-laser-security.kicad_pro   # KiCad project file
+│   └── Gerber_files/                # Production-ready manufacturing data (.gbr & .drl)
+├── src/                             # Firmware source code (PlatformIO)
+│   ├── main.cpp                     # Application entry point & core logic
+│   └── testing/                     # Isolated hardware integration scripts
+│       └── laser-connected-esp.cpp  # ESP32 laser validation script
+├── include/                         # Custom firmware global header files
+├── lib/                             # Private project-specific library code
+├── test/                            # Hardware unit testing files
+├── platformio.ini                   # Project environment, specs, and dependencies
+└── README.md                        # Project documentation overview
 ```
 <br>
 
@@ -101,13 +109,13 @@ lib_deps =
     git clone https://github.com/JaswantBhartiya/esp32-laser-security.git
     ```
     
-2. Open the project folder directly inside Visual Studio Code with the PlatformIO extension active.
+2. Open the project folder directly inside **Visual Studio Code** with the **PlatformIO** extension active.
 
 3. Align your external laser node across your mirror grid so it hits the center of the LDR tube.
 
-4. Click the PlatformIO: Upload arrow icon on the bottom status bar (or press (`Ctrl + Alt + U`) to compile and flash the firmware.
+4. Click the **PlatformIO**: **Upload** arrow icon on the bottom status bar (or press (`Ctrl + Alt + U`) to compile and flash the firmware.
 
-5. Open the Serial Monitor (`Ctrl + Alt + M`) at `115200` baud to watch the system run its initial calibration profiling.
+5. Open the **Serial Monitor** (`Ctrl + Alt + M`) at `115200` baud to watch the system run its initial calibration profiling.
 <br><br>
 
 ## ⚙️ How System States Work
@@ -129,13 +137,13 @@ lib_deps =
   +--------------+ (GPIO 18 Shorted to GND / Reset Wired Activated)
 ```
 
-1. Optical Profiling (Boot): The system samples the active beam alignment over a 3-second window to capture maximum intensity. It then models a mathematical median trigger threshold exactly halfway between the direct laser strength and background ambient lighting.
+1. **Optical Profiling (Boot)**: The system samples the active beam alignment over a 3-second window to capture maximum intensity. It then models a mathematical median trigger threshold exactly halfway between the direct laser strength and background ambient lighting.
 
-2. Active Guard Mode: The ESP32 continuously polls the internal 12-bit Analog-to-Digital Converter (`ADC1`). A software debounce filter requires the beam to be fully broken for more than `50ms` to prevent false alarms from flying bugs or floating dust.
+2. **Active Guard Mode**: The ESP32 continuously polls the internal 12-bit Analog-to-Digital Converter (`ADC1`). A software debounce filter requires the beam to be fully broken for more than `50ms` to prevent false alarms from flying bugs or floating dust.
 
-3. Breached Alert Loop: When triggered, the system shifts into a high-priority alert state. The ESP32 generates a non-blocking dual-tone police siren sweep pattern (`800Hz` to `1300Hz`) using microseconds delay-toggling on `GPIO 5`.
+3. **Breached Alert Loop**: When triggered, the system shifts into a high-priority alert state. The ESP32 generates a non-blocking dual-tone police siren sweep pattern (`800Hz` to `1300Hz`) using microseconds delay-toggling on `GPIO 5`.
 
-4. Hardware Disarm: While driving the siren frequencies, the controller actively checks `GPIO 18`. The exact microsecond your reset button is pressed (or your jumper wires touch), the system immediately mutes the buzzer, runs a fresh optical room calibration, and shifts smoothly back to active protection mode.
+4. **Hardware Disarm**: While driving the siren frequencies, the controller actively checks `GPIO 18`. The exact microsecond your reset button is pressed (or your jumper wires touch), the system immediately mutes the buzzer, runs a fresh optical room calibration, and shifts smoothly back to active protection mode.
 <br><br>
 
 ## 📄 License
