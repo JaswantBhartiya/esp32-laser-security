@@ -14,6 +14,28 @@ A production-grade perimeter defense and security grid engineered for the **ESP3
 * **Hardware Interruption Reset:** Features an internal-pullup hardware polling engine on `GPIO 18` that allows a standard push-button or a simple jumper-wire touch shortcut to instantly silence alarms and re-arm the perimeter.
 <br>
 
+---
+
+## 🛠️ Hardware Design
+
+### System Architecture & Schematic
+The circuit diagram maps out the ESP32 interface, sensor voltage dividers, and laser control lines for low-noise operation.
+
+![Circuit Schematic](./assets/circuit_schematic.png)
+
+### 3D PCB Renders
+The physical board layout features a compact form factor, a clean stealth-black aesthetic, dedicated mounting holes, and clear silkscreen labeling for easy debugging.
+
+#### Isometric View
+![PCB Isometric](./assets/pcb_3d_isometric.png)
+
+| Front Layer Layout | Back Layer Layout |
+| :---: | :---: |
+| ![PCB Front](./assets/pcb_3d_front.png) | ![PCB Back](./assets/pcb_3d_back.png) |
+<br>
+
+---
+
 ## 📂 Repository Structure
 ``` text
 esp32-laser-security/
