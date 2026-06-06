@@ -18,37 +18,67 @@ A production-grade perimeter defense and security grid engineered for the **ESP3
 
 ## 🛠️ Hardware Design
 
-### System Architecture & Schematic
-The circuit diagram maps out the ESP32 interface, sensor voltage dividers, and laser control lines for low-noise operation.
+### 📐 Electronics Layout (Raw KiCad PCB)
+The custom board features a compact form factor, dedicated mounting holes, and clear silkscreen labeling.
 
-![Circuit Schematic](./assets/circuit_schematic.png)
-
-### 3D PCB Renders
-The physical board layout features a compact form factor, a clean stealth-black aesthetic, dedicated mounting holes, and clear silkscreen labeling for easy debugging.
-
-#### Isometric View
-![PCB Isometric](./assets/pcb_3d_isometric.png)
-
-| Front Layer Layout | Back Layer Layout |
+| PCB Front (Component Layer) | PCB Back (Solder Layer) |
 | :---: | :---: |
-| ![PCB Front](./assets/pcb_3d_front.png) | ![PCB Back](./assets/pcb_3d_back.png) |
+| ![PCB Raw Front](./assets/pcb_raw_front.png) | ![PCB Raw Back](./assets/pcb_raw_back.png) |
+
+### 🔩 Standalone Mechanical Mount
+To achieve complete optical isolation and filter out ambient environmental light, a custom-molded mounting shroud was engineered.
+
+<details>
+<summary><b>Click to expand standalone shroud views</b></summary>
+
+| Shroud Isometric Perspective | Top-Down Aperture | Bottom Interface |
+| :---: | :---: | :---: |
+| ![Mount Front](./assets/mount_isometric.PNG) | ![Mount Top](./assets/mount_top.PNG) | ![Mount Bottom](./assets/mount_bottom.PNG) |
+
+**Design Specifications:**
+* **Material:** Matte/Satin Dark Grey PLA (To absorb stray internal reflections)
+* **Print Optimization:** Fine angular mesh resolution with 0.01mm linear deviation for smooth internal cylinder walls.
+* **Fasteners:** Dual M3 clearance holes for flush mounting.
+</details>
+
+### 🤝 Fully Integrated Assembly
+The combined views show the mechanical shroud assembly bolted directly onto the electronic control circuit board.
+
+<br>
+<div align="center">
+       <img src="./assets/pcb_assembled_isometric.PNG" width="650" alt="Integrated Isometric">
+</div>
+<br>
+       
+| Assembly Top View | Assembly Solder Side View |
+| :---: | :---: |
+| ![Assembly Front](./assets/pcb_assembled_front.PNG) | ![Assembly Back](./assets/pcb_assembled_back.PNG) |
 <br>
 
 ---
 
 ## 📂 Repository Structure
+``` yml
 ``` text
 esp32-laser-security/
 ├── assets/                          # Documentation media and images
 │   ├── circuit_schematic.png        # Exported electrical schematic diagram
-│   ├── pcb_3d_front.png             # 3D render view of the board front
-│   ├── pcb_3d_back.png              # 3D render view of the board back
-│   └── pcb_3d_isometric.png         # Angled 3D isometric board view
+│   ├── pcb_raw_front.png            # 3D view of the board front (no mount)
+│   ├── pcb_raw_bottom.jpg           # 3D view of the board back (no mount)
+│   ├── pcb_raw_top.jpg              # 3D integrated view (board + mount)
+│   ├── mount_front.jpg              # Standalone 3D mount perspective view
+│   ├── mount_top.jpg                # Standalone 3D mount top-down view
+│   ├── mount_side.jpg               # Standalone 3D mount side view
+│   ├── pcb_assembled_front.jpg      # Final assembly front angled view
+│   └── pcb_assembled_bottom.jpg     # Final assembly back view with branding
 ├── esp32-laser-security-pcb/        # KiCad hardware design files
 │   ├── esp32-laser-security.kicad_sch   # Hardware schematic design
 │   ├── esp32-laser-security.kicad_pcb   # PCB layer routing layout
-│   ├── esp32-laser-security.kicad_pro   # KiCad project file
-│   └── Gerber_files/                # Production-ready manufacturing data (.gbr & .drl)
+│   └── esp32-laser-security.kicad_pro   # KiCad project file
+├── production/                      # Production-ready manufacturing & CAD data
+│   ├── gerbers/                     # Gerber & Drill fabrication data (.gbr & .drl)
+│   ├── 3d_printing/                 # Printable 3D mechanical shroud (.STL / .3MF)
+│   └── step_models/                 # Complete color-accurate STEP assembly model
 ├── src/                             # Firmware source code (PlatformIO)
 │   ├── main.cpp                     # Application entry point & core logic
 │   └── testing/                     # Isolated hardware integration scripts
