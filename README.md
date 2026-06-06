@@ -59,7 +59,6 @@ The combined views show the mechanical shroud assembly bolted directly onto the 
 
 ## 📂 Repository Structure
 ``` yml
-``` text
 esp32-laser-security/
 ├── assets/                          # Documentation media and images
 │   ├── circuit_schematic.png        # Exported electrical schematic diagram
