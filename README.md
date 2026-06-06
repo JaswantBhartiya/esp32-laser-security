@@ -18,6 +18,11 @@ A production-grade perimeter defense and security grid engineered for the **ESP3
 
 ## 🛠️ Hardware Design
 
+### System Schematic
+The circuit diagram maps out the ESP32 interface, sensor voltage dividers, and laser control lines for low-noise operation.
+
+![Circuit Schematic](./assets/circuit_schematic.png)
+
 ### 📐 Electronics Layout (Raw KiCad PCB)
 The custom board features a compact form factor, dedicated mounting holes, and clear silkscreen labeling.
 
