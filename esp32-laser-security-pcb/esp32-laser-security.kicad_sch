@@ -1523,37 +1523,37 @@
 	(junction
 		(at 146.05 105.41)
 		(diameter 0)
-		(color 0 0 0 0)
+		(color 72 72 72 1)
 		(uuid "0ad85765-75e6-4ea3-8231-344eca9416ad")
 	)
 	(junction
 		(at 144.78 105.41)
 		(diameter 0)
-		(color 0 0 0 0)
+		(color 72 72 72 1)
 		(uuid "2785ef44-e26e-49a0-8f8f-a4d620a3e229")
 	)
 	(junction
 		(at 123.19 86.36)
 		(diameter 0)
-		(color 0 0 0 0)
+		(color 255 0 0 1)
 		(uuid "2ba36a21-38f1-4c98-969c-db120e2c1bfe")
 	)
 	(junction
 		(at 161.29 115.57)
 		(diameter 0)
-		(color 0 0 0 0)
+		(color 255 0 0 1)
 		(uuid "a620c5ce-d265-4910-a4bf-ab2d5e23cc5e")
 	)
 	(junction
 		(at 163.83 86.36)
 		(diameter 0)
-		(color 0 0 0 0)
+		(color 255 0 0 1)
 		(uuid "e28a5277-29e7-48f1-90af-d112a0915867")
 	)
 	(junction
 		(at 144.78 63.5)
 		(diameter 0)
-		(color 0 0 0 0)
+		(color 72 72 72 1)
 		(uuid "fac9210b-e6da-43ca-9bfb-1865c9d707c1")
 	)
 	(wire
@@ -1563,6 +1563,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "01ce3d72-34ed-4804-8d23-7e7bece9aab4")
 	)
@@ -1573,6 +1574,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 72 72 72 1)
 		)
 		(uuid "051c29b7-9e83-4d31-a4d9-9708d1d0c3b9")
 	)
@@ -1583,6 +1585,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "090ef195-f15f-43a4-a64d-1a62df799a00")
 	)
@@ -1593,6 +1596,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 72 72 72 1)
 		)
 		(uuid "0cc8251f-ca21-4e42-9cbd-2b6d18c1fb39")
 	)
@@ -1603,6 +1607,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 72 72 72 1)
 		)
 		(uuid "0ecb50f6-3090-4084-a2fe-093cbf4c47ea")
 	)
@@ -1613,6 +1618,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 72 72 72 1)
 		)
 		(uuid "18d7bf40-f76c-46fe-ba24-e3aa720f47c5")
 	)
@@ -1623,6 +1629,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "1ae31032-7c43-4f7f-8c4d-69db2c45ba65")
 	)
@@ -1633,6 +1640,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "1cd4c3fb-d1e2-4834-ab27-8c8eefc77d0d")
 	)
@@ -1643,6 +1651,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "28d7fb14-0fdd-4611-8ede-2e99a020567e")
 	)
@@ -1653,6 +1662,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "39125791-826e-450d-8971-5f3df0457df7")
 	)
@@ -1663,6 +1673,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "47fe0142-8df0-4f14-90ee-2976ce040f46")
 	)
@@ -1673,6 +1684,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 72 72 72 1)
 		)
 		(uuid "4b050d58-794d-4d11-917a-a6123967ce77")
 	)
@@ -1683,6 +1695,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "502f028f-ac24-4eec-b7e2-264a0ebffa10")
 	)
@@ -1693,6 +1706,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "52de353a-45ce-4f79-9eb2-651f70b79e13")
 	)
@@ -1713,6 +1727,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 72 72 72 1)
 		)
 		(uuid "5c52b4e6-ef6e-4ff9-9402-341bc8c4b087")
 	)
@@ -1723,6 +1738,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "5c95da37-b40a-4227-9add-ba652acb0594")
 	)
@@ -1733,6 +1749,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "5f899446-eca1-427d-a2eb-fd02e069708f")
 	)
@@ -1743,6 +1760,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "664f3435-2e1d-49ed-adab-8182acae8c09")
 	)
@@ -1753,6 +1771,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "67cf9fb9-b757-46b5-972c-ef6ff1a629a4")
 	)
@@ -1763,6 +1782,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "6cc04264-54ae-48a6-bc4f-a12443f4090e")
 	)
@@ -1773,6 +1793,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "700fcf27-1bfe-438a-b724-1a3c52c35888")
 	)
@@ -1783,6 +1804,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "702c97a6-fc97-41eb-9467-de58d6eff190")
 	)
@@ -1793,6 +1815,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "71c51d6a-bb20-4b59-9755-8a01e9205e4e")
 	)
@@ -1803,6 +1826,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 72 72 72 1)
 		)
 		(uuid "72cb2e02-6e3d-44a7-b842-eb14c3e54f1a")
 	)
@@ -1813,6 +1837,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 72 72 72 1)
 		)
 		(uuid "77fc0f7f-0209-42f3-bab1-f6d268a1bdbd")
 	)
@@ -1823,6 +1848,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "7d0a8f41-69bf-4ca2-9e1a-d27c844d7e14")
 	)
@@ -1833,6 +1859,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "7f35cbb0-854d-43b1-9514-ad3e24c97b78")
 	)
@@ -1843,6 +1870,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "80433162-d14a-4c43-a402-19cbff8452ac")
 	)
@@ -1853,6 +1881,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 72 72 72 1)
 		)
 		(uuid "829c538e-3b80-449a-a272-cbc657973665")
 	)
@@ -1863,6 +1892,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "95aa0d9e-8831-456d-83e4-76b0a2d785eb")
 	)
@@ -1873,6 +1903,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 72 72 72 1)
 		)
 		(uuid "95d4bd00-c208-4497-940b-f1a308ff37a7")
 	)
@@ -1883,6 +1914,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "97f9e5ca-9c3e-4e83-8a1b-662b271972f7")
 	)
@@ -1893,6 +1925,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "9c80ecbb-fc9d-412c-b3b3-c248149ad7f3")
 	)
@@ -1903,6 +1936,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "9d67f4e4-27f0-4f9a-8457-75bf39bff723")
 	)
@@ -1913,6 +1947,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "9ef96b44-05dd-4052-9e79-31642b2c7320")
 	)
@@ -1923,6 +1958,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "a086f60f-272b-49dd-8627-8e5cb3976b9e")
 	)
@@ -1933,6 +1969,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "aab387c6-c3ad-43f6-af47-8977ff0362da")
 	)
@@ -1943,6 +1980,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 72 72 72 1)
 		)
 		(uuid "adbf565d-bd68-4b2a-9367-43442fc515d7")
 	)
@@ -1953,6 +1991,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "b4e59fa9-706e-4800-90af-f75f153c8c4c")
 	)
@@ -1963,6 +2002,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "c4f42b7d-7e8b-47d2-a27e-a5d11d1063a8")
 	)
@@ -1973,6 +2013,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "d2920234-2f23-4919-b55e-cbf480abcc0d")
 	)
@@ -1983,6 +2024,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "f375f8eb-edea-4ced-8960-563b202b6b14")
 	)
@@ -1993,6 +2035,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 72 72 72 1)
 		)
 		(uuid "f5d9648b-7226-41a8-9587-9f40d36a7d78")
 	)
@@ -2003,6 +2046,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "f69cb693-cef3-4efb-a278-9cb6677308fc")
 	)
@@ -2013,6 +2057,7 @@
 		(stroke
 			(width 0)
 			(type default)
+			(color 255 0 0 1)
 		)
 		(uuid "f84334ec-0ef9-47a4-bf5f-afe9d0e3d800")
 	)
@@ -2021,6 +2066,7 @@
 		(effects
 			(font
 				(size 1.27 1.27)
+				(color 0 0 194 1)
 			)
 			(justify left bottom)
 		)
@@ -2031,6 +2077,7 @@
 		(effects
 			(font
 				(size 1.27 1.27)
+				(color 0 0 194 1)
 			)
 			(justify left bottom)
 		)
@@ -2041,6 +2088,7 @@
 		(effects
 			(font
 				(size 1.27 1.27)
+				(color 0 0 194 1)
 			)
 			(justify left bottom)
 		)
@@ -2051,6 +2099,7 @@
 		(effects
 			(font
 				(size 1.27 1.27)
+				(color 0 0 194 1)
 			)
 			(justify left bottom)
 		)
@@ -2061,6 +2110,7 @@
 		(effects
 			(font
 				(size 1.27 1.27)
+				(color 0 0 194 1)
 			)
 			(justify left bottom)
 		)
@@ -2071,6 +2121,7 @@
 		(effects
 			(font
 				(size 1.27 1.27)
+				(color 0 0 194 1)
 			)
 			(justify left bottom)
 		)
@@ -2081,6 +2132,7 @@
 		(effects
 			(font
 				(size 1.27 1.27)
+				(color 0 0 194 1)
 			)
 			(justify left bottom)
 		)
@@ -2098,7 +2150,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "05edb070-a0d5-4061-9b6f-59cb426c59b0")
-		(property "Reference" "J1"
+		(property "Reference" "J2"
 			(at 119.38 103.124 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2109,7 +2161,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Conn_01x07"
+		(property "Value" "Headers"
 			(at 122.174 100.33 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2177,7 +2229,7 @@
 		(instances
 			(project "esp32-laser-security"
 				(path "/46dd9cca-a9f6-46c6-90d0-bd2585ef2119"
-					(reference "J1")
+					(reference "J2")
 					(unit 1)
 				)
 			)
@@ -2195,7 +2247,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1423d862-ac2d-4beb-ba36-c1b247b00348")
-		(property "Reference" "330_ohm1"
+		(property "Reference" "R3"
 			(at 111.76 78.7399 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2206,12 +2258,13 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "330Ω"
 			(at 111.76 81.2799 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
+					(face "KiCad Font")
 					(size 1.27 1.27)
 				)
 				(justify left)
@@ -2259,7 +2312,7 @@
 		(instances
 			(project "esp32-laser-security"
 				(path "/46dd9cca-a9f6-46c6-90d0-bd2585ef2119"
-					(reference "330_ohm1")
+					(reference "R3")
 					(unit 1)
 				)
 			)
@@ -2277,7 +2330,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "30367559-9827-492d-b157-acdd41c71e44")
-		(property "Reference" "220_ohm2"
+		(property "Reference" "R6"
 			(at 185.42 78.7399 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2288,7 +2341,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "220Ω"
 			(at 185.42 81.2799 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2341,7 +2394,7 @@
 		(instances
 			(project "esp32-laser-security"
 				(path "/46dd9cca-a9f6-46c6-90d0-bd2585ef2119"
-					(reference "220_ohm2")
+					(reference "R6")
 					(unit 1)
 				)
 			)
@@ -2358,7 +2411,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "34b8ce97-0af0-4eda-8175-2d2f7cbec3d6")
-		(property "Reference" "10k_ohm1"
+		(property "Reference" "R2"
 			(at 152.4 113.792 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2369,7 +2422,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "10kΩ"
 			(at 154.9399 113.03 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2422,7 +2475,7 @@
 		(instances
 			(project "esp32-laser-security"
 				(path "/46dd9cca-a9f6-46c6-90d0-bd2585ef2119"
-					(reference "10k_ohm1")
+					(reference "R2")
 					(unit 1)
 				)
 			)
@@ -2441,23 +2494,25 @@
 		(fields_autoplaced yes)
 		(uuid "356c5244-4b0d-4d8c-a072-9207b2e09921")
 		(property "Reference" "SW1"
-			(at 222.25 100.33 0)
+			(at 218.44 99.0599 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "SW_Push"
-			(at 219.71 100.33 0)
+		(property "Value" "RESET BUTTON"
+			(at 218.44 101.5999 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" "Button_Switch_THT:SW_PUSH_6mm"
@@ -2529,7 +2584,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_01x02_Pin"
+		(property "Value" "EXT BUZZER"
 			(at 179.324 120.65 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2609,7 +2664,7 @@
 				)
 			)
 		)
-		(property "Value" "LED_Dual_AAK"
+		(property "Value" "LED RG BIPOLAR"
 			(at 162.6235 54.61 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2683,8 +2738,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "97c21a26-27a2-4f87-8d16-7b39d2343212")
-		(property "Reference" "J2"
-			(at 114.3 53.975 0)
+		(property "Reference" "J1"
+			(at 121.92 48.26 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2693,8 +2748,8 @@
 				)
 			)
 		)
-		(property "Value" "LED_connector"
-			(at 116.84 53.975 0)
+		(property "Value" "EXT LED RG BIPOLAR"
+			(at 121.92 50.8 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2748,7 +2803,7 @@
 		(instances
 			(project "esp32-laser-security"
 				(path "/46dd9cca-a9f6-46c6-90d0-bd2585ef2119"
-					(reference "J2")
+					(reference "J1")
 					(unit 1)
 				)
 			)
@@ -2777,7 +2832,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R_Photo"
+		(property "Value" "LDR"
 			(at 152.3999 127 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2849,7 +2904,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b271926f-2735-4126-bd9e-2d8eae28c86e")
-		(property "Reference" "330_ohm2"
+		(property "Reference" "R4"
 			(at 125.73 78.7399 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2860,7 +2915,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "330Ω"
 			(at 125.73 81.2799 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2913,7 +2968,7 @@
 		(instances
 			(project "esp32-laser-security"
 				(path "/46dd9cca-a9f6-46c6-90d0-bd2585ef2119"
-					(reference "330_ohm2")
+					(reference "R4")
 					(unit 1)
 				)
 			)
@@ -2931,7 +2986,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "cc63bd02-8202-4b4b-a90e-8395b589245c")
-		(property "Reference" "220_ohm1"
+		(property "Reference" "R5"
 			(at 166.37 78.7399 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2942,7 +2997,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "220Ω"
 			(at 166.37 81.2799 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2995,7 +3050,7 @@
 		(instances
 			(project "esp32-laser-security"
 				(path "/46dd9cca-a9f6-46c6-90d0-bd2585ef2119"
-					(reference "220_ohm1")
+					(reference "R5")
 					(unit 1)
 				)
 			)
