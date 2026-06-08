@@ -54,14 +54,18 @@ The circuit diagram maps out the ESP32 interface, sensor voltage dividers, and l
 
 ![Circuit Schematic](./assets/circuit_schematic.png)
 
+<br><br>
+
 ### 📐 Electronics Layout (Raw KiCad PCB)
 The custom board features a compact form factor, dedicated mounting holes, and clear silkscreen labeling.
 
-| PCB Front (Component Layer) | PCB Back (Solder Layer) |
+| Front Layout | Back Layout |
 | :---: | :---: |
-| ![PCB Raw Front](./assets/pcb_raw_front.png) | ![PCB Raw Back](./assets/pcb_raw_back.png) |
+| <img src="./assets/pcb_raw_front.png" width="700"> | <img src="./assets/pcb_raw_back.png" width="700"> |
 
-### <span id="mechanical">⚙️</span>🔩 Standalone Mechanical Mount
+<br><br>
+
+### <span id="mechanical"></span>⚙️ Standalone Mechanical Mount
 To achieve complete optical isolation and filter out ambient environmental light, a custom-molded mounting shroud was engineered.
 
 <details>
@@ -79,7 +83,7 @@ To achieve complete optical isolation and filter out ambient environmental light
 * **Internal Diameter:** Uniform 5.5mm corridor (Provides a 0.5mm clearance cushion for hand-soldered LDR play and FDM printing shrinkage)
 * **Fasteners:** Dual M3 clearance holes for flush mounting.
 </details>
-
+<br>
 
 ### 🤝 Fully Integrated Assembly
 The combined views show the mechanical shroud assembly bolted directly onto the electronic control circuit board.
@@ -88,11 +92,12 @@ The combined views show the mechanical shroud assembly bolted directly onto the 
 <div align="center">
        <img src="./assets/pcb_assembled_isometric.PNG" width="650" alt="Integrated Isometric">
 </div>
+
 <br>
        
 | Assembly Top View | Assembly Solder Side View |
 | :---: | :---: |
-| ![Assembly Front](./assets/pcb_assembled_front.PNG) | ![Assembly Back](./assets/pcb_assembled_back.PNG) |
+| <img src="./assets/pcb_assembled_front.PNG" width="700"> | <img src="./assets/pcb_assembled_back.PNG" width="700"> |
 <br>
 
 ---
