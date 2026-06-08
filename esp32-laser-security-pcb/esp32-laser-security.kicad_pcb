@@ -95,9 +95,9 @@
 		(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=7.62mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 		(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 7.62mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
 		(property "Reference" "R4"
-			(at 3.81 0.13 90)
+			(at 3.81 -2.5 90)
 			(layer "F.SilkS")
-			(uuid "89af54e1-d5a3-480f-b254-6e9dccfc9751")
+			(uuid "195b0c3c-23dd-4e86-a19a-37544ae4193a")
 			(effects
 				(font
 					(size 1 1)
@@ -108,7 +108,7 @@
 		(property "Value" "330Ω"
 			(at 3.5 2.62 90)
 			(layer "F.SilkS")
-			(uuid "c1c0282c-858c-42d6-8f46-4985f6893df1")
+			(uuid "899bdbe7-b71e-42a7-9cb3-fc9e4623b109")
 			(effects
 				(font
 					(size 1 1)
@@ -120,7 +120,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "9b8def81-f29d-413f-ac45-53e33fac7fe4")
+			(uuid "a177e0ca-5e98-426c-83b2-677373092447")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -131,7 +131,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "ea45ac31-6192-4a98-a59c-5261eac88284")
+			(uuid "0d7477ba-b1b3-4f3b-8dfe-0cc031882c18")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -265,7 +265,7 @@
 			(uuid "aeff224e-e3d2-4cc1-adf1-c080eee5ba54")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 3.81 -2.5 90)
+			(at 3.81 0 90)
 			(layer "F.Fab")
 			(uuid "5d4550d7-9ad2-4de1-833a-c25482e3aa08")
 			(effects
