@@ -54,7 +54,7 @@ The circuit diagram maps out the ESP32 interface, sensor voltage dividers, and l
 
 ![Circuit Schematic](./assets/circuit_schematic.png)
 
-<br><br>
+<br>
 
 ### 📐 Electronics Layout (Raw KiCad PCB)
 The custom board features a compact form factor, dedicated mounting holes, and clear silkscreen labeling.
@@ -63,13 +63,14 @@ The custom board features a compact form factor, dedicated mounting holes, and c
 | :---: | :---: |
 | <img src="./assets/pcb_raw_front.png" width="700"> | <img src="./assets/pcb_raw_back.png" width="700"> |
 
-<br><br>
+<br>
 
 ### <span id="mechanical"></span>⚙️ Standalone Mechanical Mount
 To achieve complete optical isolation and filter out ambient environmental light, a custom-molded mounting shroud was engineered.
+<details> 
+<summary><b>Click to Expand | Standalone Shroud Views</b></summary>
 
-<details>
-<summary><b>#### Click to expand standalone shroud views</b></summary>
+<br>
 
 | Shroud Isometric Perspective | Top-Down Aperture | Bottom Interface |
 | :---: | :---: | :---: |
@@ -79,10 +80,13 @@ To achieve complete optical isolation and filter out ambient environmental light
 ![Mount Dimensions](./assets/mount_dimensions.PNG)
 
 **Design Specifications:**
+
 * **Material:** Matte/Satin Dark Grey PLA (To absorb stray internal reflections)
 * **Internal Diameter:** Uniform 5.5mm corridor (Provides a 0.5mm clearance cushion for hand-soldered LDR play and FDM printing shrinkage)
 * **Fasteners:** Dual M3 clearance holes for flush mounting.
+
 </details>
+
 <br>
 
 ### 🤝 Fully Integrated Assembly
