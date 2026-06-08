@@ -72,9 +72,9 @@ To achieve complete optical isolation and filter out ambient environmental light
 
 <br>
 
-| Shroud Isometric Perspective | Top-Down Aperture | Bottom Interface |
+| Isometric View | Front View | Back View |
 | :---: | :---: | :---: |
-| ![Mount Front](./assets/mount_isometric.PNG) | ![Mount Top](./assets/mount_top.PNG) | ![Mount Bottom](./assets/mount_bottom.PNG) |
+| ![Mount Front](./assets/mount_isometric.PNG) | ![Mount Top](./assets/mount_front.PNG) | ![Mount Bottom](./assets/mount_back.PNG) |
 
 #### 📐 Engineering Dimensions & Tolerances
 ![Mount Dimensions](./assets/mount_dimensions.PNG)
@@ -86,6 +86,10 @@ To achieve complete optical isolation and filter out ambient environmental light
 * **Fasteners:** Dual M3 clearance holes for flush mounting.
 
 </details>
+
+<br>
+
+👉 **[Click here to view the interactive 3D Mount Model Natively on GitHub](./production/3d_printing/mount.STL)**
 
 <br>
 
