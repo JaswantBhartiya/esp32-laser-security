@@ -1,11 +1,42 @@
+<div align="center">
+  
+<img src="https://api.iconify.design/material-symbols:shield-locked-outline-rounded.svg?color=%2300FF33" width="150" alt="Laser Security Sentinel Icon" />
+  <br><br>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=33&duration=3000&pause=1000&color=00FFCC&center=true&vCenter=true&width=700&height=50&lines=Independent+Long-Range+Multi-Bounce;Laser+Security+System+Sentinel" alt="Typing Effect Headline" />
+
+
+<br><br>
+
 # Independent Long-Range Multi-Bounce Laser Security System
+
+<!-- Badges Section -->
+<p align="center">
+  <img src="https://img.shields.io/badge/C%2B%2B-00599C?style=flat-square&logo=c%2B%2B&logoColor=white" alt="C++">
+  <img src="https://img.shields.io/badge/ESP32-E7352C?style=flat-square&logo=espressif&logoColor=white" alt="ESP32">
+  <img src="https://img.shields.io/badge/KiCad-1A2C56?style=flat-square&logo=kicad&logoColor=white" alt="KiCad">
+  <img src="https://img.shields.io/badge/SolidWorks-DC143C?style=flat-square&logo=dassaultsystemes&logoColor=white" alt="SolidWorks">
+  <img src="https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black" alt="Linux">
+  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License">
+</p>
+
+
+<h4>
+    <a href="#demo">Demo</a>&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="#hardware">Hardware Design</a>&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="#mechanical">Mechanical Shroud</a>&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="#firmware">Firmware & Calibration</a>&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://github.com/JaswantBhartiya" target="_blank">Contact</a>
+</h4>
+
+</div>
+<br>
 
 A production-grade perimeter defense and security grid engineered for the **ESP32 DevKit V1** platform using **PlatformIO** and the **Arduino framework**. This system utilizes an independent, constantly active external laser node and a high-reflectivity multi-mirror array to secure complex, long-range perimeters with zero data-wire overhead across the room.
 <br><br>
 
 ---
 
-## 🚀 Key Features
+## <span id="demo">🚀</span> Key Features & Demo
 
 * **Independent Laser Topology:** Optimized for practical room deployment. The transmitter node operates entirely on its own power source across the room, completely eliminating the need for long signal wires running back to the controller.
 * **Reflected Multi-Bounce Optimization:** Engineered to process focusable green ($532\text{nm}$) or red ($650\text{nm}$) industrial laser modules bounced across first-surface reflection arrays.
@@ -16,7 +47,7 @@ A production-grade perimeter defense and security grid engineered for the **ESP3
 
 ---
 
-## 🛠️ Hardware Design
+## <span id="hardware">🛠️</span> Hardware Design
 
 ### System Schematic
 The circuit diagram maps out the ESP32 interface, sensor voltage dividers, and laser control lines for low-noise operation.
@@ -30,7 +61,7 @@ The custom board features a compact form factor, dedicated mounting holes, and c
 | :---: | :---: |
 | ![PCB Raw Front](./assets/pcb_raw_front.png) | ![PCB Raw Back](./assets/pcb_raw_back.png) |
 
-### 🔩 Standalone Mechanical Mount
+### <span id="mechanical">⚙️</span>🔩 Standalone Mechanical Mount
 To achieve complete optical isolation and filter out ambient environmental light, a custom-molded mounting shroud was engineered.
 
 <details>
@@ -40,11 +71,15 @@ To achieve complete optical isolation and filter out ambient environmental light
 | :---: | :---: | :---: |
 | ![Mount Front](./assets/mount_isometric.PNG) | ![Mount Top](./assets/mount_top.PNG) | ![Mount Bottom](./assets/mount_bottom.PNG) |
 
+#### 📐 Engineering Dimensions & Tolerances
+![Mount Dimensions](./assets/mount_dimensions.PNG)
+
 **Design Specifications:**
 * **Material:** Matte/Satin Dark Grey PLA (To absorb stray internal reflections)
-* **Print Optimization:** Fine angular mesh resolution with 0.01mm linear deviation for smooth internal cylinder walls.
+* **Internal Diameter:** Uniform 5.5mm corridor (Provides a 0.5mm clearance cushion for hand-soldered LDR play and FDM printing shrinkage)
 * **Fasteners:** Dual M3 clearance holes for flush mounting.
 </details>
+
 
 ### 🤝 Fully Integrated Assembly
 The combined views show the mechanical shroud assembly bolted directly onto the electronic control circuit board.
@@ -204,4 +239,4 @@ lib_deps =
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the `LICENSE` file for details.
+This project is licensed under the MIT License - see the [`LICENSE`](./LICENSE) file for details.
