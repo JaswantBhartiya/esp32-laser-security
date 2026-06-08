@@ -69,7 +69,7 @@ The custom board features a compact form factor, dedicated mounting holes, and c
 To achieve complete optical isolation and filter out ambient environmental light, a custom-molded mounting shroud was engineered.
 
 <details>
-<summary><b>Click to expand standalone shroud views</b></summary>
+<summary><b>#### Click to expand standalone shroud views</b></summary>
 
 | Shroud Isometric Perspective | Top-Down Aperture | Bottom Interface |
 | :---: | :---: | :---: |
@@ -88,7 +88,6 @@ To achieve complete optical isolation and filter out ambient environmental light
 ### 🤝 Fully Integrated Assembly
 The combined views show the mechanical shroud assembly bolted directly onto the electronic control circuit board.
 
-<br>
 <div align="center">
        <img src="./assets/pcb_assembled_isometric.PNG" width="650" alt="Integrated Isometric">
 </div>
