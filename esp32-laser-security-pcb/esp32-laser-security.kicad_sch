@@ -2584,7 +2584,7 @@
 				)
 			)
 		)
-		(property "Value" "EXT BUZZER"
+		(property "Value" "EXT. BUZZER"
 			(at 179.324 120.65 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2664,7 +2664,7 @@
 				)
 			)
 		)
-		(property "Value" "LED RG BIPOLAR"
+		(property "Value" "RG LED"
 			(at 162.6235 54.61 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2748,7 +2748,7 @@
 				)
 			)
 		)
-		(property "Value" "EXT LED RG BIPOLAR"
+		(property "Value" "EXT. RG LED"
 			(at 121.92 50.8 90)
 			(show_name no)
 			(do_not_autoplace no)
