@@ -36,3 +36,30 @@ Implementing these hardware modifications is highly recommended when scaling the
 * **The Vulnerability:** The `J1` (External RG LED) and `J3` (External Buzzer) expansion ports route outward to external wires that span through a physical room environment. Human contact with these exposed headers, connectors, or wires can introduce a high-voltage electrostatic discharge (ESD) arc into the system.
 * **The Risk:** An uninsulated ESD zap on an external signal line will surge down the copper traces directly back to the controller, immediately puncturing the sensitive CMOS logic gates of the ESP32 or inducing spontaneous system latch-ups and hardware resets.
 * **The Implementation:** Install a low-capacitance, bi-directional Transient Voltage Suppression (TVS) diode array (such as the `PESD3V3` series) right at the entry pads of the `J1` and `J3` connectors. These specialized diodes function as ultra-fast voltage clamps, safely sinking high-voltage electrostatic spikes straight to the `GND` plane in nanoseconds before the energy can ever propagate to the processing core.
+
+<br><br>
+
+## 🖨️ Mechanical Mounts & Enclosure Design (Future Revisions)
+
+To transition the system from an open-frame desktop prototype into a stable, structural room installation, custom 3D-printable mechanical brackets and enclosures must be modeled. This will eliminate reliance on tape, adhesive putty, or temporary fixtures.
+
+---
+
+#### 1. Micro-Adjustable Mirror Alignment Mounts
+* **The Engineering Challenge:** Bouncing a laser dot across multiple glass mirrors requires high optical precision. Tiny structural shifts or vibrations will cause the beam to drift completely off the LDR sensor corridor over long distances.
+* **The Design Solution:** A dual-plate compression bracket assembly. The base plate mounts rigidly to the wall, while the mirror-holding plate sits on a central pivot point supported by three tension springs and fine-pitch M3 machine screws. 
+* **The Implementation:** Tightening or loosening the individual M3 leveling screws allows for ultra-fine pitch and yaw adjustments ($X$/$Y$ axis tuning), making it effortless to calibrate and lock the laser dot perfectly onto the center tracking window.
+
+---
+
+#### 2. Decentralized External LED Panels
+* **The Engineering Challenge:** The external `J1` RG LED indicator needs to be mounted prominently near door frames or hallways to show the perimeter status (**Green** for Armed, **Red** for Tripped) before a user steps into an active zone.
+* **The Design Solution:** A low-profile, wedge-shaped indicator pod that encapsulates the external common-cathode RG LED and its wiring harness.
+* **The Implementation:** The housing features an integrated front-facing light-diffusing lens cavity to spread the LED glare smoothly, along with rear keyhole slots or double-sided tape channels for flush-mounting against walls or door frames.
+
+---
+
+#### 3. High-Acoustic External Buzzer Housing
+* **The Engineering Challenge:** The external active buzzer wired to the `J3` terminal block must be protected against dust, moisture, and wire strain without muffling the sound output pressure.
+* **The Design Solution:** A compact, resonant chamber box designed specifically to amplify high-frequency alarm tones ($800\text{Hz}$ to $1300\text{Hz}$).
+* **The Implementation:** The enclosure incorporates a front-facing acoustic grille pattern directly aligned with the buzzer's piezo element, built-in internal retention slots to hold the components securely, and an integrated M2/M3 screw-terminal relief clamp to prevent external tugs from pulling the wires out of the PCB connection.
