@@ -7,8 +7,7 @@
 
 <br><br>
 
-# Independent Long-Range Multi-Bounce Laser Security System
-
+# 🛡️ ESP32 Multi-Bounce Laser Security System
 <!-- Badges Section -->
 <p align="center">
   <img src="https://img.shields.io/badge/C%2B%2B-00599C?style=flat-square&logo=c%2B%2B&logoColor=white" alt="C++">
@@ -27,22 +26,24 @@
     <a href="#firmware">Firmware & Calibration</a>&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;&nbsp;
     <a href="https://github.com/JaswantBhartiya" target="_blank">Contact</a>
 </h4>
-
 </div>
+
 <br>
 
-A production-grade perimeter defense and security grid engineered for the **ESP32 DevKit V1** platform using **PlatformIO** and the **Arduino framework**. This system utilizes an independent, constantly active external laser node and a high-reflectivity multi-mirror array to secure complex, long-range perimeters with zero data-wire overhead across the room.
+A professional, budget-friendly embedded security system built around a custom PCB and the ESP32 DevKit V1. This project utilizes an optical multi-bounce laser path bounced across real glass mirrors to form a tight perimeter grid, monitored dynamically by an onboard Light Dependent Resistor (LDR).
+
 <br><br>
 
 ---
 
 ## <span id="demo">🚀</span> Key Features & Demo
 
-* **Independent Laser Topology:** Optimized for practical room deployment. The transmitter node operates entirely on its own power source across the room, completely eliminating the need for long signal wires running back to the controller.
-* **Reflected Multi-Bounce Optimization:** Engineered to process focusable green ($532\text{nm}$) or red ($650\text{nm}$) industrial laser modules bounced across first-surface reflection arrays.
-* **Dynamic Independent Calibration:** Dynamically measures laser targeting thresholds and profiles ambient light environments on boot, making the system highly adaptive to changing room illumination without needing to control the laser's power state.
-* **Zero-Driver Audio Sirens:** Eliminates unstable, crash-prone microcontroller PWM audio subsystems (`ledc`) by driving hardware buzzers via low-level, high-frequency manual digital toggling loops.
-* **Hardware Interruption Reset:** Features an internal-pullup hardware polling engine on `GPIO 18` that allows a standard push-button or a simple jumper-wire touch shortcut to instantly silence alarms and re-arm the perimeter.
+* **Wireless Perimeter Deployment:** Optimized for practical room scaling. The laser transmitter operates on its own isolated power rail across the room, completely eliminating the need to run long, messy signal lines back to the main controller.
+* **Multi-Bounce Optical Path:** Engineered to utilize low-cost, focusable red ($650\text{nm}$) or green ($532\text{nm}$) dot laser diodes. The concentrated beam cleanly sustains 4 to 5 glass mirror reflections across a room while maintaining a sharp focal point on the sensor.
+* **Smart Ambient Calibration:** On boot, the system automatically samples the room's ambient light level to calculate a dynamic trigger threshold. This ensures highly reliable tripwire detection during both bright daylight and dark nights without manual recalibration.
+* **Dual-State Status Indicators:** Utilizes an integrated Red-Green (RG) LED array—mirrored across both an onboard indicator (`D1`) and an external expansion header (`J1`)—providing instant visual feedback (**Green** for Armed, **Red** for Tripped).
+* **Hardware Interruption Reset:** Employs a debounced hardware polling engine on `GPIO 18`. Pressing the onboard tactile button (`SW1`) instantly silences the active buzzer, flushes the alarm registers, and re-arms the perimeter grid.
+
 <br>
 
 ---
@@ -110,35 +111,30 @@ The combined views show the mechanical shroud assembly bolted directly onto the 
 ---
 
 ## 📂 Repository Structure
-``` yml
-esp32-laser-security/
-├── assets/                          # Documentation media and images
-│   ├── circuit_schematic.png        # Exported electrical schematic diagram
-│   ├── pcb_raw_front.png            # 3D view of the board front (no mount)
-│   ├── pcb_raw_bottom.jpg           # 3D view of the board back (no mount)
-│   ├── pcb_raw_top.jpg              # 3D integrated view (board + mount)
-│   ├── mount_front.jpg              # Standalone 3D mount perspective view
-│   ├── mount_top.jpg                # Standalone 3D mount top-down view
-│   ├── mount_side.jpg               # Standalone 3D mount side view
-│   ├── pcb_assembled_front.jpg      # Final assembly front angled view
-│   └── pcb_assembled_bottom.jpg     # Final assembly back view with branding
-├── esp32-laser-security-pcb/        # KiCad hardware design files
-│   ├── esp32-laser-security.kicad_sch   # Hardware schematic design
-│   ├── esp32-laser-security.kicad_pcb   # PCB layer routing layout
-│   └── esp32-laser-security.kicad_pro   # KiCad project file
-├── production/                      # Production-ready manufacturing & CAD data
-│   ├── gerbers/                     # Gerber & Drill fabrication data (.gbr & .drl)
-│   ├── 3d_printing/                 # Printable 3D mechanical shroud (.STL / .3MF)
-│   └── step_models/                 # Complete color-accurate STEP assembly model
-├── src/                             # Firmware source code (PlatformIO)
-│   ├── main.cpp                     # Application entry point & core logic
-│   └── testing/                     # Isolated hardware integration scripts
-│       └── laser-connected-esp.cpp  # ESP32 laser validation script
-├── include/                         # Custom firmware global header files
-├── lib/                             # Private project-specific library code
-├── test/                            # Hardware unit testing files
-├── platformio.ini                   # Project environment, specs, and dependencies
-└── README.md                        # Project documentation overview
+``` yaml
+                  esp32-laser-security/
+                  ├── src/                             # 💻 Firmware Source Code (PlatformIO)
+                  │   ├── main.cpp                     #   └── Main security system logic
+                  │   └── testing/                     #   └── Isolated hardware testing scripts
+                  │       └── laser-connected-esp.cpp
+                  │
+                  ├── esp32-laser-security-pcb/        # 🛠️ KiCad Hardware Design Files
+                  │   ├── *.kicad_sch                  #   └── Circuit schematic
+                  │   └── *.kicad_pcb                  #   └── PCB routing layout
+                  │
+                  ├── production/                      # 📦 Manufacturing & 3D Printing Files
+                  │   ├── gerbers/                     #   └── PCB manufacturing files (Gerbers)
+                  │   ├── 3d_printing/                 #   └── 3D-printable mount shroud (.STL / .3MF)
+                  │   └── step_models/                 #   └── 3D CAD assembly model (.STEP)
+                  │
+                  ├── assets/                          # 🖼️ Documentation Media
+                  │   ├── circuit_schematic.png        #   └── Circuit diagram for README
+                  │   ├── pcb_raw_*.png/jpg            #   └── 3D images of unmounted PCB
+                  │   ├── mount_*.jpg                  #   └── 3D images of standalone plastic mount
+                  │   └── pcb_assembled_*.jpg          #   └── Photos of the final assembly
+                  │
+                  ├── platformio.ini                   # ⚙️ Project configuration & libraries
+                  └── README.md                        # 📖 Main project documentation guide
 ```
 <br>
 
@@ -149,12 +145,19 @@ esp32-laser-security/
 | Component | Quantity | Purpose |
 | :--- | :--- | :--- |
 | **ESP32 DevKit V1 Board** | 1 | Central processing unit & real-time monitoring engine |
-| **Industrial Dot Laser Module (5mW)** | 1 | Focusable transmitter node ($532\text{nm}$ Green recommended for long ranges) |
+| **SYD1230 650nm 5mW Red Laser Module** | 1 | Focusable transmitter node optimized for budget-friendly bouncing |
 | **Light Dependent Resistor (LDR)** | 1 | High-sensitivity optical receiver |
-| **Metal Film Resistor ($10\text{ k}\Omega$)** | 1 | Pull-down resistor for the analog voltage divider circuit |
 | **Active Piezo Buzzer** | 1 | High-decibel audible dual-frequency warning siren |
-| **Tactile Push-Button / Jumper Wire** | 1 | Instant manual system reset / alarm silencer |
 | **First-Surface Mirrors / HDD Platters** | 2–4 | Zero-ghosting high-reflectivity corner reflection nodes |
+| **Metal Film Resistor (10 kΩ)** | 1 | Pull-down resistor for the analog voltage divider circuit |
+| **Metal Film Resistor (330 Ω)** | 2 | Current-limiting protection resistors (e.g., for status LEDs) |
+| **Metal Film Resistor (220 Ω)** | 2 | Current-limiting protection resistors (e.g., for buzzer power constraints) |
+| **6x6x5mm Tactile Push Button Switch** | 1 | PCB-mount tactile switch for instant manual system reset or calibration |
+| **7×1 Pin Male Berg Header (Straight, 10mm Height, 2.54mm Pitch)** | 1 | Breakout interface connector for peripheral GPIO programming/debugging pins |
+| **XY126V-5.0-2P Green Screw Terminal Block (5mm Pitch, Through Hole)** | 1 | XINLAIYA 10A 300V power connector with wire protection for external main DC input |
+| **3 Pin JST XH 2.5mm Top Entry Header (Straight Male & Female Pair)** | 1 | Polarity-keyed locking connector for secure LDR receiver wire routing |
+| **Socket Head Cap Screw (M3x12)** | 2 | High-strength mechanical fasteners for enclosure or PCB corner mounting |
+| **M3 Stainless Steel Hex Nut** | 2 | Matching rust-resistant hexagonal nuts to secure the M3 mounting screws safely |
 
 <br>
 
@@ -167,15 +170,36 @@ To achieve a clean optical baseline and prevent room lighting from flooding the 
 ### Central Control Unit Pinout Mapping
 
 ```text
-       +---------------------------------------------+
-       |               ESP32 DEVKIT V1               |
-       +---------------------------------------------+
-          | GPIO 5  | -------> Active Buzzer (+)
-          | GPIO 18 | <------- Reset Jumper Wire / Switch (Short to GND)
-          | GPIO 34 | <------- LDR / 10kΩ Divider Junction (ADC1_CH6)
-          | 3V3     | -------> LDR Input Power (+)
-          | GND     | -------> Common System Ground Rail (Buzzer, Switch, Resistor)
+                       +-----------------------------------------------------------------+
+                       |                         ESP32 DEVKIT V1                         |
+                       +-----------------------------------------------------------------+
+                          | GPIO 34 (ADC) | <-------> Pin 1: LDR  (R1 Sensor Output Node)
+                          | GPIO 18       | <-------- Pin 2: RST  (Reset Push Button SW1)
+                          | GPIO 5        | --------> Pin 3: BUZZ (External Buzzer J3)
+                          | GPIO 19*      | --------> Pin 4: GRN  (Green LED Control Rail)
+                          | GPIO 21*      | --------> Pin 5: RED  (Red LED Control Rail)
+                          | GND           | --------> Pin 6: GND  (Common System Ground)
+                          | 3V3           | --------> Pin 7: 3V3  (System Power Input)
+
 ```
+``` text
+                +-----------------------------------------------------------------------------------+
+                |                            EXTERNAL COMPONENT CONNECTIONS                         |
+                +-----------------------------------------------------------------------------------+
+                |                                                                                   |
+                |  [ PCB Header J1 ] --------------------> Connects to EXTERNAL RG LED              |
+                |     (EXT. RG LED)                         - Pin R: Red Indicator Anode            |
+                |                                           - Pin G: Green Indicator Anode          |
+                |                                           - Pin -: Common Ground Rail             |
+                |                                                                                   |
+                |  [ PCB Header J3 ] --------------------> Connects to EXTERNAL ACTIVE BUZZER       |
+                |     (EXT. BUZZER)                         - Pin +: Positive Audio Signal Input    |
+                |                                           - Pin -: Negative Ground Return         |
+                |                                                                                   |
+                +-----------------------------------------------------------------------------------+
+
+```
+
 
 ### 3.3V Safe Voltage Divider Layout
 
