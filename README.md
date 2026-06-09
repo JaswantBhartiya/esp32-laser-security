@@ -112,29 +112,29 @@ The combined views show the mechanical shroud assembly bolted directly onto the 
 
 ## 📂 Repository Structure
 ``` yaml
-                  esp32-laser-security/
-                  ├── src/                             # 💻 Firmware Source Code (PlatformIO)
-                  │   ├── main.cpp                     #   └── Main security system logic
-                  │   └── testing/                     #   └── Isolated hardware testing scripts
-                  │       └── laser-connected-esp.cpp
-                  │
-                  ├── esp32-laser-security-pcb/        # 🛠️ KiCad Hardware Design Files
-                  │   ├── *.kicad_sch                  #   └── Circuit schematic
-                  │   └── *.kicad_pcb                  #   └── PCB routing layout
-                  │
-                  ├── production/                      # 📦 Manufacturing & 3D Printing Files
-                  │   ├── gerbers/                     #   └── PCB manufacturing files (Gerbers)
-                  │   ├── 3d_printing/                 #   └── 3D-printable mount shroud (.STL / .3MF)
-                  │   └── step_models/                 #   └── 3D CAD assembly model (.STEP)
-                  │
-                  ├── assets/                          # 🖼️ Documentation Media
-                  │   ├── circuit_schematic.png        #   └── Circuit diagram for README
-                  │   ├── pcb_raw_*.png/jpg            #   └── 3D images of unmounted PCB
-                  │   ├── mount_*.jpg                  #   └── 3D images of standalone plastic mount
-                  │   └── pcb_assembled_*.jpg          #   └── Photos of the final assembly
-                  │
-                  ├── platformio.ini                   # ⚙️ Project configuration & libraries
-                  └── README.md                        # 📖 Main project documentation guide
+      esp32-laser-security/
+      ├── src/                             # 💻 Firmware Source Code (PlatformIO)
+      │   ├── main.cpp                     #   └── Main security system logic
+      │   └── testing/                     #   └── Isolated hardware testing scripts
+      │       └── laser-connected-esp.cpp
+      │
+      ├── esp32-laser-security-pcb/        # 🛠️ KiCad Hardware Design Files
+      │   ├── *.kicad_sch                  #   └── Circuit schematic
+      │   └── *.kicad_pcb                  #   └── PCB routing layout
+      │
+      ├── production/                      # 📦 Manufacturing & 3D Printing Files
+      │   ├── gerbers/                     #   └── PCB manufacturing files (Gerbers)
+      │   ├── 3d_printing/                 #   └── 3D-printable mount shroud (.STL / .3MF)
+      │   └── step_models/                 #   └── 3D CAD assembly model (.STEP)
+      │
+      ├── assets/                          # 🖼️ Documentation Media
+      │   ├── circuit_schematic.png        #   └── Circuit diagram for README
+      │   ├── pcb_raw_*.png/jpg            #   └── 3D images of unmounted PCB
+      │   ├── mount_*.jpg                  #   └── 3D images of standalone plastic mount
+      │   └── pcb_assembled_*.jpg          #   └── Photos of the final assembly
+      │
+      ├── platformio.ini                   # ⚙️ Project configuration & libraries
+      └── README.md                        # 📖 Main project documentation guide
 ```
 <br>
 
@@ -170,33 +170,33 @@ To achieve a clean optical baseline and prevent room lighting from flooding the 
 ### Central Control Unit Pinout Mapping
 
 ```text
-                       +-----------------------------------------------------------------+
-                       |                         ESP32 DEVKIT V1                         |
-                       +-----------------------------------------------------------------+
-                          | GPIO 34 (ADC) | <-------> Pin 1: LDR  (R1 Sensor Output Node)
-                          | GPIO 18       | <-------- Pin 2: RST  (Reset Push Button SW1)
-                          | GPIO 5        | --------> Pin 3: BUZZ (External Buzzer J3)
-                          | GPIO 19*      | --------> Pin 4: GRN  (Green LED Control Rail)
-                          | GPIO 21*      | --------> Pin 5: RED  (Red LED Control Rail)
-                          | GND           | --------> Pin 6: GND  (Common System Ground)
-                          | 3V3           | --------> Pin 7: 3V3  (System Power Input)
+      +-----------------------------------------------------------------+
+      |                         ESP32 DEVKIT V1                         |
+      +-----------------------------------------------------------------+
+        | GPIO 34 (ADC) | <-------> Pin 1: LDR  (R1 Sensor Output Node)
+        | GPIO 18       | <-------- Pin 2: RST  (Reset Push Button SW1)
+        | GPIO 5        | --------> Pin 3: BUZZ (External Buzzer J3)
+        | GPIO 19*      | --------> Pin 4: GRN  (Green LED Control Rail)
+        | GPIO 21*      | --------> Pin 5: RED  (Red LED Control Rail)
+        | GND           | --------> Pin 6: GND  (Common System Ground)
+        | 3V3           | --------> Pin 7: 3V3  (System Power Input)
 
 ```
 ``` text
-                +-----------------------------------------------------------------------------------+
-                |                            EXTERNAL COMPONENT CONNECTIONS                         |
-                +-----------------------------------------------------------------------------------+
-                |                                                                                   |
-                |  [ PCB Header J1 ] --------------------> Connects to EXTERNAL RG LED              |
-                |     (EXT. RG LED)                         - Pin R: Red Indicator Anode            |
-                |                                           - Pin G: Green Indicator Anode          |
-                |                                           - Pin -: Common Ground Rail             |
-                |                                                                                   |
-                |  [ PCB Header J3 ] --------------------> Connects to EXTERNAL ACTIVE BUZZER       |
-                |     (EXT. BUZZER)                         - Pin +: Positive Audio Signal Input    |
-                |                                           - Pin -: Negative Ground Return         |
-                |                                                                                   |
-                +-----------------------------------------------------------------------------------+
+        +-----------------------------------------------------------------------------------+
+        |                            EXTERNAL COMPONENT CONNECTIONS                         |
+        +-----------------------------------------------------------------------------------+
+        |                                                                                   |
+        |  [ PCB Header J1 ] --------------------> Connects to EXTERNAL RG LED              |
+        |     (EXT. RG LED)                         - Pin R: Red Indicator Anode            |
+        |                                           - Pin G: Green Indicator Anode          |
+        |                                           - Pin -: Common Ground Rail             |
+        |                                                                                   |
+        |  [ PCB Header J3 ] --------------------> Connects to EXTERNAL ACTIVE BUZZER       |
+        |     (EXT. BUZZER)                         - Pin +: Positive Audio Signal Input    |
+        |                                           - Pin -: Negative Ground Return         |
+        |                                                                                   |
+        +-----------------------------------------------------------------------------------+
 
 ```
 
@@ -271,7 +271,36 @@ lib_deps =
 3. **Breached Alert Loop**: When triggered, the system shifts into a high-priority alert state. The ESP32 generates a non-blocking dual-tone police siren sweep pattern (`800Hz` to `1300Hz`) using microseconds delay-toggling on `GPIO 5`.
 
 4. **Hardware Disarm**: While driving the siren frequencies, the controller actively checks `GPIO 18`. The exact microsecond your reset button is pressed (or your jumper wires touch), the system immediately mutes the buzzer, runs a fresh optical room calibration, and shifts smoothly back to active protection mode.
-<br><br>
+
+<br>
+
+## ⚙️ Calibration & Environment Tuning
+
+The system features an automated **Optical Profiling Engine** on boot. To get the highest accuracy and avoid false alarms from ambient sunlight or room lamps, use the following deployment steps:
+
+
+
+### 🛠️ Step-by-Step Alignment Guide
+1. **Physical Alignment:** Position your mirrors and aim your laser dot until it lands cleanly inside the center entry corridor of the 3D-printed LDR shroud.
+2. **Boot Calibration:** Power on or reset the ESP32 via `SW1`. Keep the laser path completely unobstructed for the first **3 seconds**. 
+3. **Threshold Calculation:** The firmware samples the peak light intensity and dynamically sets a software trigger threshold using a mathematical median:
+   
+   $$\text{Threshold} = \frac{\text{Laser Light Intensity} + \text{Ambient Background Light}}{2}$$
+
+4. **Verification:** Open your PlatformIO Serial Monitor (`115200` baud). You will see the baseline values printed out. Block the beam with your hand to verify the system instantly transitions to `STATE_BREACHED`.
+
+
+### 🔍 Ambient Light Troubleshooting
+
+If you are deploying the system in environments with highly unpredictable lighting (e.g., near windows with moving sunlight), use this quick matrix to tune your setup:
+
+| Issue | Root Cause | Practical Fix |
+| :--- | :--- | :--- |
+| **System instantly triggers on boot** | Laser beam missed the LDR corridor during the 3-second calibration window. | Tap the `SW1` Reset button to rerun the calibration loop *after* double-checking your mirror alignment. |
+| **Beam is broken, but no alarm sounds** | High ambient room light is bleeding into the shroud, keeping the LDR resistance artificially low. | 1. Move the laser setup away from direct windows.<br>2. Increase the internal length of your 3D shroud corridor in CAD to block side-glare. |
+| **Siren flickers on and off rapidly** | The laser dot is hovering right on the edge of the LDR opening, causing minor vibration jitter. | Tighten the M3 mounting fasteners on your mechanical shroud to ensure a rigid optical line. |
+
+<br>
 
 ## 📄 License
 
