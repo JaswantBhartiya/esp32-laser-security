@@ -147,7 +147,7 @@ The combined views show the mechanical shroud assembly bolted directly onto the 
 | **ESP32 DevKit V1 Board** | 1 | Central processing unit & real-time monitoring engine |
 | **SYD1230 650nm 5mW Red Laser Module** | 1 | Focusable transmitter node optimized for budget-friendly bouncing |
 | **Light Dependent Resistor (LDR)** | 1 | High-sensitivity optical receiver |
-| **Active Piezo Buzzer** | 1 | High-decibel audible dual-frequency warning siren |
+| **SFM-27 Active Piezo Buzzer (Continuous Sound)** | 1 | 3–24V high-decibel audible indicator; allows the ESP32 to cleanly drive custom dual-frequency police siren sweeps without internal timing conflicts |
 | **First-Surface Mirrors / HDD Platters** | 2–4 | Zero-ghosting high-reflectivity corner reflection nodes |
 | **Metal Film Resistor (10 kΩ)** | 1 | Pull-down resistor for the analog voltage divider circuit |
 | **Metal Film Resistor (330 Ω)** | 2 | Current-limiting protection resistors (e.g., for status LEDs) |
