@@ -301,6 +301,17 @@ If you are deploying the system in environments with highly unpredictable lighti
 | **Siren flickers on and off rapidly** | The laser dot is hovering right on the edge of the LDR opening, causing minor vibration jitter. | Tighten the M3 mounting fasteners on your mechanical shroud to ensure a rigid optical line. |
 
 <br>
+To see the planned industrial-grade protection sub-circuits, noise filters, and RF layout optimizations mapped out for the next board revision, check out the development logs:
+---
+
+## 🚀 Hardware Evolution & Development
+To see the complete multi-phase development timeline—including planned v2.0 hardware protection circuits, v3.0 wireless IoT feature tracking, and long-term mechanical upgrades—view the project's growth pipeline:
+
+👉 **[View the Comprehensive Project Roadmap & Future Upgrades](./HARDWARE_ROADMAP.md)**
+
+<br>
+
+---
 
 ## 📄 License
 
