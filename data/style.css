@@ -1,0 +1,392 @@
+/* Custom High-Saturation Neon-Electric Matrix Color Palette */
+:root {
+    --bg-dark: #03060f;
+    --bg-card: #080d1a;
+    --bg-console: #010206;
+    --neon-cyan: #00f3ff;
+    --neon-green: #39ff14;
+    --neon-red: #ff0055;
+    --neon-amber: #ffaa00;
+    --text-dim: #557a95;
+    --border-glow: rgba(0, 243, 255, 0.15);
+}
+
+/* 📐 CRITICAL FIX: Zero out default browser body padding and margins */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh; /* Force layout to lock exactly to screen height */
+    background-color: var(--bg-dark);
+    overflow: hidden; /* Prevents unwanted secondary scrollbars */
+}
+
+body {
+    color: var(--neon-cyan);
+    font-family: 'Consolas', 'Fira Code', 'Courier New', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* 🖥️ Master Wrapper: Now fills 100% of the screen dimensions */
+.hud-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0; /* No inner gap to screen edges */
+    gap: 0;     /* Cards will flush tight against each other */
+}
+
+/* Header UI Layout: Flush with top, left, and right corners */
+.hud-header {
+    border-bottom: 2px solid var(--neon-cyan);
+    background: var(--bg-card);
+    padding: 15px 20px;
+    box-shadow: 0 4px 20px rgba(0, 243, 255, 0.1);
+    z-index: 10;
+}
+.header-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+h1 { margin: 0; font-size: 1.5rem; letter-spacing: 2px; }
+.sub-bar { font-size: 0.75rem; color: var(--text-dim); margin-top: 5px; }
+
+/* Connection Badge */
+.conn-tag {
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 4px;
+    border: 1px solid;
+}
+.tag-online { color: var(--neon-green); border-color: var(--neon-green); text-shadow: 0 0 5px rgba(57, 255, 20, 0.5); }
+.tag-offline { color: var(--neon-red); border-color: var(--neon-red); text-shadow: 0 0 5px rgba(255, 0, 85, 0.5); }
+
+/* Status Logic Styles */
+.state-safe { color: var(--neon-green); text-shadow: 0 0 10px rgba(57, 255, 20, 0.6); }
+.state-tripped { color: var(--neon-red); text-shadow: 0 0 10px rgba(255, 0, 85, 0.8); animation: breach-flash 1s infinite; }
+
+@keyframes breach-flash {
+    0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; }
+}
+
+/* 💻 FULL-SCREEN FLEX GRID: Dynamically stretches to consume all remaining space */
+.hud-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50%, 1fr)); /* Split 50/50 exactly on PC */
+    flex-grow: 1; /* Tells the grid to stretch out and fill the vertical space */
+    width: 100%;
+    background: #000;
+}
+
+/* Custom Panel Cards: Shared inner borders to remove double lines */
+.hud-card {
+    background: var(--bg-card);
+    padding: 30px; /* Big spacious card interiors */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center alignment inside huge cards */
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* Left Card Right-Border only, avoiding global outer borders */
+.card-telemetry {
+    border-right: 1px solid rgba(0, 243, 255, 0.3);
+}
+
+.card-header {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+h2 { font-size: 1.1rem; margin: 0; letter-spacing: 1px; }
+.sensor-id { font-size: 0.75rem; color: var(--text-dim); }
+
+/* Massive Telemetry Display Elements */
+.gauge-container { text-align: center; padding: 20px 0; }
+.gauge-value {
+    font-size: 6rem; /* Huge, high-impact numbers */
+    font-weight: bold;
+    color: var(--neon-green);
+    text-shadow: 0 0 25px rgba(57, 255, 20, 0.5);
+}
+.gauge-unit { font-size: 0.8rem; color: var(--text-dim); margin-top: 5px; letter-spacing: 1px; }
+
+/* Progress Meter Layout */
+.progress-bar-bg { width: 100%; max-width: 500px; background: #0f172a; height: 14px; border-radius: 7px; overflow: hidden; border: 1px solid #1e293b; margin-top: 20px; }
+.progress-bar-fill { height: 100%; background: var(--neon-green); width: 0%; transition: width 0.15s ease; }
+
+/* Input Controls Setup */
+.control-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 25px;
+}
+.hud-btn {
+    background: transparent;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 16px;
+    border: 1px solid;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+}
+.btn-neon-blue { color: var(--neon-cyan); border-color: var(--neon-cyan); }
+.btn-neon-blue:hover { background: var(--neon-cyan); color: var(--bg-dark); box-shadow: 0 0 20px var(--neon-cyan); }
+
+.btn-neon-amber { color: var(--neon-amber); border-color: var(--neon-amber); }
+.btn-neon-amber:hover { background: var(--neon-amber); color: var(--bg-dark); box-shadow: 0 0 20px var(--neon-amber); }
+
+.threshold-indicator { width: 100%; max-width: 400px; display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-dim); }
+#threshold-val { color: var(--neon-cyan); font-weight: bold; }
+
+/* Virtual Terminal Board Console Log - Latched directly to bottom edge */
+.hud-console {
+    background: var(--bg-console);
+    border-top: 2px solid #141f36;
+    width: 100%;
+}
+.console-header { background: #0b1124; padding: 10px 20px; font-size: 0.75rem; color: #4b6380; font-weight: bold; letter-spacing: 1px; }
+.console-body { padding: 15px 20px; height: 120px; overflow-y: auto; font-size: 0.8rem; display: flex; flex-direction: column; gap: 6px; }
+.log-line { color: #88a0c0; }
+
+/* 📱 PHONE-SPECIFIC RESPONSIVE OVERRIDES */
+@media (max-width: 768px) {
+    html, body {
+        overflow-y: auto; /* Enable vertical scrolling on smaller mobile viewport tracks */
+        height: auto;
+    }
+    .hud-container {
+        height: auto;
+        min-height: 100vh;
+    }
+    .hud-grid {
+        grid-template-columns: 1fr; /* Drop to single vertical stack */
+    }
+    .card-telemetry {
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 243, 255, 0.3); /* Switch separation rule border line to bottom orientation */
+    }
+    .gauge-value { font-size: 4.5rem; }
+    .hud-card { padding: 25px 15px; }
+}/* Custom High-Saturation Neon-Electric Matrix Color Palette */
+:root {
+    --bg-dark: #03060f;
+    --bg-card: #080d1a;
+    --bg-console: #010206;
+    --neon-cyan: #00f3ff;
+    --neon-green: #39ff14;
+    --neon-red: #ff0055;
+    --neon-amber: #ffaa00;
+    --text-dim: #557a95;
+    --border-glow: rgba(0, 243, 255, 0.15);
+}
+
+/* 📐 CRITICAL FIX: Zero out default browser body padding and margins */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh; /* Force layout to lock exactly to screen height */
+    background-color: var(--bg-dark);
+    overflow: hidden; /* Prevents unwanted secondary scrollbars */
+}
+
+body {
+    color: var(--neon-cyan);
+    font-family: 'Consolas', 'Fira Code', 'Courier New', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* 🖥️ Master Wrapper: Now fills 100% of the screen dimensions */
+.hud-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0; /* No inner gap to screen edges */
+    gap: 0;     /* Cards will flush tight against each other */
+}
+
+/* Header UI Layout: Flush with top, left, and right corners */
+.hud-header {
+    border-bottom: 2px solid var(--neon-cyan);
+    background: var(--bg-card);
+    padding: 15px 20px;
+    box-shadow: 0 4px 20px rgba(0, 243, 255, 0.1);
+    z-index: 10;
+}
+.header-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+h1 { margin: 0; font-size: 1.5rem; letter-spacing: 2px; }
+.sub-bar { font-size: 0.75rem; color: var(--text-dim); margin-top: 5px; }
+
+/* Connection Badge */
+.conn-tag {
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 4px;
+    border: 1px solid;
+}
+.tag-online { color: var(--neon-green); border-color: var(--neon-green); text-shadow: 0 0 5px rgba(57, 255, 20, 0.5); }
+.tag-offline { color: var(--neon-red); border-color: var(--neon-red); text-shadow: 0 0 5px rgba(255, 0, 85, 0.5); }
+
+/* Status Logic Styles */
+.state-safe { color: var(--neon-green); text-shadow: 0 0 10px rgba(57, 255, 20, 0.6); }
+.state-tripped { color: var(--neon-red); text-shadow: 0 0 10px rgba(255, 0, 85, 0.8); animation: breach-flash 1s infinite; }
+
+@keyframes breach-flash {
+    0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; }
+}
+
+/* 💻 FULL-SCREEN FLEX GRID: Dynamically stretches to consume all remaining space */
+.hud-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50%, 1fr)); /* Split 50/50 exactly on PC */
+    flex-grow: 1; /* Tells the grid to stretch out and fill the vertical space */
+    width: 100%;
+    background: #000;
+}
+
+/* Custom Panel Cards: Shared inner borders to remove double lines */
+.hud-card {
+    background: var(--bg-card);
+    padding: 30px; /* Big spacious card interiors */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center alignment inside huge cards */
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* Left Card Right-Border only, avoiding global outer borders */
+.card-telemetry {
+    border-right: 1px solid rgba(0, 243, 255, 0.3);
+}
+
+.card-header {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+h2 { font-size: 1.1rem; margin: 0; letter-spacing: 1px; }
+.sensor-id { font-size: 0.75rem; color: var(--text-dim); }
+
+/* Massive Telemetry Display Elements */
+.gauge-container { text-align: center; padding: 20px 0; }
+.gauge-value {
+    font-size: 6rem; /* Huge, high-impact numbers */
+    font-weight: bold;
+    color: var(--neon-green);
+    text-shadow: 0 0 25px rgba(57, 255, 20, 0.5);
+}
+.gauge-unit { font-size: 0.8rem; color: var(--text-dim); margin-top: 5px; letter-spacing: 1px; }
+
+/* Progress Meter Layout */
+.progress-bar-bg { width: 100%; max-width: 500px; background: #0f172a; height: 14px; border-radius: 7px; overflow: hidden; border: 1px solid #1e293b; margin-top: 20px; }
+.progress-bar-fill { height: 100%; background: var(--neon-green); width: 0%; transition: width 0.15s ease; }
+
+/* Input Controls Setup */
+.control-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 25px;
+}
+.hud-btn {
+    background: transparent;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 16px;
+    border: 1px solid;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+}
+.btn-neon-blue { color: var(--neon-cyan); border-color: var(--neon-cyan); }
+.btn-neon-blue:hover { background: var(--neon-cyan); color: var(--bg-dark); box-shadow: 0 0 20px var(--neon-cyan); }
+
+.btn-neon-amber { color: var(--neon-amber); border-color: var(--neon-amber); }
+.btn-neon-amber:hover { background: var(--neon-amber); color: var(--bg-dark); box-shadow: 0 0 20px var(--neon-amber); }
+
+.threshold-indicator { width: 100%; max-width: 400px; display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-dim); }
+#threshold-val { color: var(--neon-cyan); font-weight: bold; }
+
+/* Virtual Terminal Board Console Log - Latched directly to bottom edge */
+.hud-console {
+    background: var(--bg-console);
+    border-top: 2px solid #141f36;
+    width: 100%;
+}
+.console-header { background: #0b1124; padding: 10px 20px; font-size: 0.75rem; color: #4b6380; font-weight: bold; letter-spacing: 1px; }
+.console-body { padding: 15px 20px; height: 120px; overflow-y: auto; font-size: 0.8rem; display: flex; flex-direction: column; gap: 6px; }
+.log-line { color: #88a0c0; }
+
+.btn-neon-red { color: var(--neon-red); border-color: var(--neon-red); }
+.btn-neon-red:hover { background: var(--neon-red); color: var(--bg-dark); box-shadow: 0 0 20px var(--neon-red); }
+
+/* Update alignment for double network badges */
+.network-badges {
+    display: flex;
+    gap: 10px;
+}
+
+.tag-amber { 
+    color: var(--neon-amber); 
+    border-color: var(--neon-amber); 
+    text-shadow: 0 0 5px rgba(255, 170, 0, 0.5); 
+}
+
+/* 📱 PHONE-SPECIFIC RESPONSIVE OVERRIDES */
+@media (max-width: 768px) {
+    html, body {
+        overflow-y: auto; /* Enable vertical scrolling on smaller mobile viewport tracks */
+        height: auto;
+    }
+    .hud-container {
+        height: auto;
+        min-height: 100vh;
+    }
+    .hud-grid {
+        grid-template-columns: 1fr; /* Drop to single vertical stack */
+    }
+    .card-telemetry {
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 243, 255, 0.3); /* Switch separation rule border line to bottom orientation */
+    }
+    .gauge-value { font-size: 4.5rem; }
+    .hud-card { padding: 25px 15px; }
+}

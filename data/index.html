@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32 Sentinel Core Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="hud-container">
+        <header class="hud-header">
+            <div class="header-main">
+                <h1>🛡️ PERIMETER STATE: <span id="system-state" class="state-safe">SECURE</span></h1>
+                <div class="network-badges">
+                    <div id="mqtt-indicator" class="conn-tag tag-offline">MQTT: DISCONNECTED</div>
+                    <div id="connection-indicator" class="conn-tag tag-online">HTTP: ONLINE</div>
+                </div>
+            </div>
+            <div class="sub-bar">SYS_NODE_CORE // TELEMETRY GATEWAY</div>
+        </header>
+
+        <main class="hud-grid">
+            <section class="hud-card card-telemetry">
+                <div class="card-header">
+                    <h2>PERIMETER TELEMETRY</h2>
+                    <span class="sensor-id">ADC_IN_GPIO4</span>
+                </div>
+                <div class="gauge-container">
+                    <div id="ldr-gauge" class="gauge-value">0000</div>
+                    <div class="gauge-unit">ADC RAW VALUE</div>
+                </div>
+                <div class="progress-bar-bg">
+                    <div id="ldr-progress" class="progress-bar-fill" style="width: 0%"></div>
+                </div>
+            </section>
+
+            <section class="hud-card card-controls">
+                <div class="card-header">
+                    <h2>SYSTEM CONTROL NODE</h2>
+                    <span class="sensor-id">RELAY_CTRL</span>
+                </div>
+                <div class="control-actions">
+                    <button id="btn-trigger-mqtt" class="hud-btn btn-neon-red">SIMULATE REMOTE BREACH ALERT</button>
+                    <button id="btn-reset" class="hud-btn btn-neon-blue">RECOVERY RESET</button>
+                    <button id="btn-mute" class="hud-btn btn-neon-amber">MUTE SIREN</button>
+                </div>
+                <div class="threshold-indicator">
+                    <span>Alarm Trigger Limit:</span>
+                    <span id="threshold-val">1500 ADC</span>
+                </div>
+            </section>
+        </main>
+
+        <footer class="hud-console">
+            <div class="console-header">LIVE TRANSCEIVER ACTIVITY STREAM</div>
+            <div id="console-log" class="console-body">
+                <div class="log-line">[SYSTEM] Boot sequence initialized...</div>
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
