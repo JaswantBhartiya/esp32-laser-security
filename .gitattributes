@@ -1,0 +1,4 @@
+# Force GitHub to recognize frontend folder contents as trackable source code
+data/*.html linguist-detectable=true
+data/*.css linguist-detectable=true
+data/*.js linguist-detectable=true
