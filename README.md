@@ -86,7 +86,7 @@ To achieve complete optical isolation and filter out ambient environmental light
 **Design Specifications:**
 
 * **Material:** Matte/Satin Dark Grey PLA (To absorb stray internal reflections)
-* **Internal Diameter:** Uniform 5.5mm corridor (Provides a 0.5mm clearance cushion for hand-soldered LDR play and FDM printing shrinkage)
+* **Internal Diameter:** Uniform 5.7mm corridor (Provides a 0.5mm clearance cushion for hand-soldered LDR play and FDM printing shrinkage)
 * **Fasteners:** Dual M3 clearance holes for flush mounting.
 
 </details>
