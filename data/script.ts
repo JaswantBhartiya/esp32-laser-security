@@ -1,6 +1,3 @@
-// =========================================================================
-// 📐 STRICT TELEMETRY INTERFACES & STRUCTS
-// =========================================================================
 interface TelemetryData {
     ldr_raw: number;
     is_muted: boolean;
@@ -8,7 +5,6 @@ interface TelemetryData {
     last_action: "RESET" | "BREACH" | "MUTE";
 }
 
-// Global Paho MQTT Namespace declaration map targeting CDN scripts
 declare namespace Paho {
     namespace MQTT {
         class Client {
@@ -28,7 +24,6 @@ declare namespace Paho {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    // 🎛️ DOM Element Selection Matrices with Explicit Casting
     const ldrGauge = document.getElementById("ldr-gauge") as HTMLDivElement;
     const ldrProgress = document.getElementById("ldr-progress") as HTMLDivElement;
     const systemState = document.getElementById("system-state") as HTMLSpanElement;
@@ -39,8 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnReset = document.getElementById("btn-reset") as HTMLButtonElement;
     const btnMute = document.getElementById("btn-mute") as HTMLButtonElement;
     const btnTriggerMqtt = document.getElementById("btn-trigger-mqtt") as HTMLButtonElement;
-    
-    // Explicitly casting the new profile operational mode switches
     const btnModeNotifier = document.getElementById("btn-mode-notifier") as HTMLButtonElement;
     const btnModeArmed = document.getElementById("btn-mode-armed") as HTMLButtonElement;
 
@@ -50,7 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let mqttClient: Paho.MQTT.Client | null = null;
     let isLocalMode: boolean = false;
 
-    // 🛑 STATE RUNTIME CACHE: Prevents the background heartbeat loops from flickering the UI flags
     let currentSystemState: TelemetryData = {
         ldr_raw: 450,
         is_muted: false,
@@ -67,9 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
         consoleLog.scrollTop = consoleLog.scrollHeight;
     }
 
-    // =========================================================================
-    // 🗺️ AUTOMATIC NETWORK ENVIRONMENT RESOLVER (AP vs STA Router Mode)
-    // =========================================================================
     if (window.location.hostname === "192.168.4.1") {
         isLocalMode = true;
         mqttIndicator.innerText = "MQTT: BYPASSED (LOCAL AP)";
@@ -99,19 +88,13 @@ document.addEventListener("DOMContentLoaded", () => {
         mqttClient.onMessageArrived = (message: any) => {
             try {
                 const rawPayload: string = message.payloadString;
-                
-                // 🛡️ GLITCH GUARD 1: Safely filter out unformatted cross-talk packets from the public broker
                 if (!rawPayload || !rawPayload.includes("{") || !rawPayload.includes("}")) return; 
                 
                 const data: TelemetryData = JSON.parse(rawPayload);
-                
-                // 🛡️ GLITCH GUARD 2: Ensure critical schema keys exist before modifying visual components
                 if (data && typeof data.ldr_raw !== 'undefined') {
                     renderUiData(data, "MQTT WAN");
                 }
-            } catch(e) {
-                // Silently swallow parsing errors from public broker noise streams
-            }
+            } catch(e) {}
         };
 
         mqttClient.onConnectionLost = (responseObject) => {
@@ -123,11 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     }
 
-    // =========================================================================
-    // 📊 STABLE UNIFIED UI RENDERING ENGINE
-    // =========================================================================
     function renderUiData(data: TelemetryData, sourceLabel: string): void {
-        // Feed incoming state to local memory matrix tracking cache
         currentSystemState = data;
 
         const rawValue: number = data.ldr_raw;
@@ -135,12 +114,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const currentMode: "NOTIFIER" | "ARMED" = data.system_mode || "NOTIFIER";
         const lastAction: "RESET" | "BREACH" | "MUTE" = data.last_action || "RESET";
 
-        // Math padding execution optimization: Zero compilation target error issues
         ldrGauge.innerText = ("0000" + rawValue).slice(-4);
         const percentage: number = (rawValue / 4095) * 100;
         ldrProgress.style.width = `${percentage}%`;
 
-        // Synchronize Active Operational Profile Buttons
         if (currentMode === "NOTIFIER") {
             if (btnModeNotifier) btnModeNotifier.classList.add("active-mode");
             if (btnModeArmed) btnModeArmed.classList.remove("active-mode");
@@ -149,7 +126,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (btnModeNotifier) btnModeNotifier.classList.remove("active-mode");
         }
 
-        // Evaluate Alarm Actions dependent on Running Profile Matrix States
         if (lastAction === "BREACH") {
             if (currentMode === "ARMED" && systemState.innerText !== "BREACH DETECTED") {
                 systemState.innerText = "BREACH DETECTED";
@@ -172,11 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ldrProgress.style.backgroundColor = "#39ff14";
             addLog(`💚 [${sourceLabel}] System cleared. Perimeter structural latch secure.`);
         }
-        else if (lastAction === "MUTE" && systemState.innerText !== "MUTED TRACK") {
-            // Log once, do not build infinite execution blocks
-        }
 
-        // Re-render button state label configurations strictly 
         if (systemMuted) {
             btnMute.innerText = "MUTED";
             btnMute.style.borderColor = "#ffaa00";
@@ -202,12 +174,8 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
-    // =========================================================================
-    // 🕹️ INTERACTIVE DISPATCH CONTROLLER LOGIC (Guarantees Full Payload Compliance)
-    // =========================================================================
     function dispatchCommand(updates: Partial<TelemetryData>, localEndpoint: string): void {
         if (!isLocalMode && mqttClient && mqttClient.isConnected()) {
-            // Build the complete strict payload object so C++ .indexOf parsing doesn't crash
             const compiledPayload = JSON.stringify({
                 ldr_raw: updates.ldr_raw !== undefined ? updates.ldr_raw : currentSystemState.ldr_raw,
                 is_muted: updates.is_muted !== undefined ? updates.is_muted : currentSystemState.is_muted,
@@ -220,36 +188,14 @@ document.addEventListener("DOMContentLoaded", () => {
             mqttClient.send(message);
             addLog(`[TX WAN] Outbound update package sent over broker gateway...`);
         } else {
-            // Fallback to local access point web endpoints
             fetch(localEndpoint);
         }
     }
 
-    // 1. Profile Switch Handler: Notifier Chime Mode
-    if (btnModeNotifier) {
-        btnModeNotifier.addEventListener("click", () => {
-            dispatchCommand({ system_mode: "NOTIFIER" }, '/api/action?cmd=mode_notifier');
-        });
-    }
-
-    // 2. Profile Switch Handler: Armed Lockdown Mode
-    if (btnModeArmed) {
-        btnModeArmed.addEventListener("click", () => {
-            dispatchCommand({ system_mode: "ARMED" }, '/api/action?cmd=mode_armed');
-        });
-    }
-
-    // 3. Perimeter Alert Simulation Handler
-    btnTriggerMqtt.addEventListener("click", () => {
-        dispatchCommand({ ldr_raw: 3850, is_muted: false, last_action: "BREACH" }, '/api/action?cmd=sim_breach');
-    });
-
-    // 4. Perimeter Recovery Reset Handler
-    btnReset.addEventListener("click", () => {
-        dispatchCommand({ ldr_raw: 450, is_muted: false, last_action: "RESET" }, '/api/action?cmd=reset');
-    });
-
-    // 5. Sound Layer Mute Trigger Handler
+    if (btnModeNotifier) btnModeNotifier.addEventListener("click", () => dispatchCommand({ system_mode: "NOTIFIER" }, '/api/action?cmd=mode_notifier'));
+    if (btnModeArmed) btnModeArmed.addEventListener("click", () => dispatchCommand({ system_mode: "ARMED" }, '/api/action?cmd=mode_armed'));
+    btnTriggerMqtt.addEventListener("click", () => dispatchCommand({ ldr_raw: 3850, is_muted: false, last_action: "BREACH" }, '/api/action?cmd=sim_breach'));
+    btnReset.addEventListener("click", () => dispatchCommand({ ldr_raw: 450, is_muted: false, last_action: "RESET" }, '/api/action?cmd=reset'));
     btnMute.addEventListener("click", () => {
         const nextMuteState = !currentSystemState.is_muted;
         dispatchCommand({ is_muted: nextMuteState, last_action: "MUTE" }, '/api/action?cmd=mute');

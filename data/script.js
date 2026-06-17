@@ -64,8 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     renderUiData(data, "MQTT WAN");
                 }
             }
-            catch (e) {
-            }
+            catch (e) { }
         };
         mqttClient.onConnectionLost = (responseObject) => {
             if (responseObject.errorCode !== 0) {
@@ -119,8 +118,6 @@ document.addEventListener("DOMContentLoaded", () => {
             ldrProgress.style.backgroundColor = "#39ff14";
             addLog(`💚 [${sourceLabel}] System cleared. Perimeter structural latch secure.`);
         }
-        else if (lastAction === "MUTE" && systemState.innerText !== "MUTED TRACK") {
-        }
         if (systemMuted) {
             btnMute.innerText = "MUTED";
             btnMute.style.borderColor = "#ffaa00";
@@ -162,22 +159,12 @@ document.addEventListener("DOMContentLoaded", () => {
             fetch(localEndpoint);
         }
     }
-    if (btnModeNotifier) {
-        btnModeNotifier.addEventListener("click", () => {
-            dispatchCommand({ system_mode: "NOTIFIER" }, '/api/action?cmd=mode_notifier');
-        });
-    }
-    if (btnModeArmed) {
-        btnModeArmed.addEventListener("click", () => {
-            dispatchCommand({ system_mode: "ARMED" }, '/api/action?cmd=mode_armed');
-        });
-    }
-    btnTriggerMqtt.addEventListener("click", () => {
-        dispatchCommand({ ldr_raw: 3850, is_muted: false, last_action: "BREACH" }, '/api/action?cmd=sim_breach');
-    });
-    btnReset.addEventListener("click", () => {
-        dispatchCommand({ ldr_raw: 450, is_muted: false, last_action: "RESET" }, '/api/action?cmd=reset');
-    });
+    if (btnModeNotifier)
+        btnModeNotifier.addEventListener("click", () => dispatchCommand({ system_mode: "NOTIFIER" }, '/api/action?cmd=mode_notifier'));
+    if (btnModeArmed)
+        btnModeArmed.addEventListener("click", () => dispatchCommand({ system_mode: "ARMED" }, '/api/action?cmd=mode_armed'));
+    btnTriggerMqtt.addEventListener("click", () => dispatchCommand({ ldr_raw: 3850, is_muted: false, last_action: "BREACH" }, '/api/action?cmd=sim_breach'));
+    btnReset.addEventListener("click", () => dispatchCommand({ ldr_raw: 450, is_muted: false, last_action: "RESET" }, '/api/action?cmd=reset'));
     btnMute.addEventListener("click", () => {
         const nextMuteState = !currentSystemState.is_muted;
         dispatchCommand({ is_muted: nextMuteState, last_action: "MUTE" }, '/api/action?cmd=mute');
