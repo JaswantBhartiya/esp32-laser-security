@@ -125,7 +125,7 @@ The system uses **two separate power paths** to stop electrical noise from the l
 ### ⚡ Path 1: ESP32 & Custom PCB
 Powers the main controller and sensor board.
 
-![ESP32 Power Layout](./images/esp32_pcb_power.png)
+![ESP32 Power Layout](./assets/esp32_pcb_power.png)
 
 * **Battery (18650)** ➔ **TP4056 Charger** (Safe charging)
 * **TP4056 Output** ➔ **Boost Converter** (Steps up voltage)
@@ -136,7 +136,7 @@ Powers the main controller and sensor board.
 ### 🔦 Path 2: Laser Transmitter
 Powers the laser module independently.
 
-![Laser Power Layout](./images/laser_power.png)
+![Laser Power Layout](./assets/laser_power.png)
 
 * Runs on a clean, dedicated **3.3V line**.
 * Connects directly to the system ground for stable timing.
