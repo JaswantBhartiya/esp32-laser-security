@@ -178,7 +178,7 @@ To achieve a clean optical baseline and prevent room lighting from flooding the 
       +-----------------------------------------------------------------+
       |                         ESP32 DEVKIT V1                         |
       +-----------------------------------------------------------------+
-        | GPIO 34 (ADC) | <-------> Pin 1: LDR  (R1 Sensor Output Node)
+        | GPIO 4 (ADC) | <-------> Pin 1: LDR  (R1 Sensor Output Node)
         | GPIO 18       | <-------- Pin 2: RST  (Reset Push Button SW1)
         | GPIO 5        | --------> Pin 3: BUZZ (External Buzzer J3)
         | GPIO 19*      | --------> Pin 4: GRN  (Green LED Control Rail)
