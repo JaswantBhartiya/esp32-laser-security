@@ -15,8 +15,9 @@
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS3">
   <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript">
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript">
-  <img src="https://img.shields.io/badge/ESP32-E7352C?style=flat-square&logo=espressif&logoColor=white" alt="ESP32-S3">
+  <img src="https://img.shields.io/badge/ESP32--S3-E7352C?style=flat-square&logo=espressif&logoColor=white" alt="ESP32-S3">
   <img src="https://img.shields.io/badge/KiCad-1A2C56?style=flat-square&logo=kicad&logoColor=white" alt="KiCad">
+  <img src="https://img.shields.io/badge/Fritzing-DF5B57?style=flat-square&logo=fritzing&logoColor=white" alt="Fritzing">
   <img src="https://img.shields.io/badge/SolidWorks-DC143C?style=flat-square&logo=dassaultsystemes&logoColor=white" alt="SolidWorks">
   <img src="https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black" alt="Linux">
   <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License">
@@ -125,7 +126,11 @@ The system uses **two separate power paths** to stop electrical noise from the l
 ### ⚡ Path 1: ESP32 & Custom PCB
 Powers the main controller and sensor board.
 
-![ESP32 Power Layout](./assets/esp32_pcb_power.png)
+<div align="center">
+       <img src="./assets/esp32_pcb_power.png" width="700" alt="ESP32 Power Layout">
+</div>
+
+<br>
 
 * **Battery (18650)** ➔ **TP4056 Charger** (Safe charging)
 * **TP4056 Output** ➔ **Boost Converter** (Steps up voltage)
@@ -137,7 +142,11 @@ Powers the main controller and sensor board.
 ### 🔦 Path 2: Laser Transmitter
 Powers the laser module independently.
 
-![Laser Power Layout](./assets/laser_power.png)
+<div align="center">
+       <img src="./assets/laser_power.png" width="700" alt="Laser Power Layout">
+</div>
+
+<br>
 
 * Runs on a clean, dedicated **3.3V line**.
 * Connects directly to the system ground for stable timing.
@@ -181,7 +190,7 @@ Powers the laser module independently.
 
 | Component | Quantity | Purpose |
 | :--- | :--- | :--- |
-| **ESP32 DevKit V1 Board** | 1 | Central processing unit & real-time monitoring engine |
+| **ESP32-S3 DevKitC-1 N16R8** | 1 | Central processing unit & real-time monitoring engine |
 | **SYD1230 650nm 5mW Red Laser Module** | 1 | Focusable transmitter node optimized for budget-friendly bouncing |
 | **Light Dependent Resistor (LDR)** | 1 | High-sensitivity optical receiver |
 | **SFM-27 Active Piezo Buzzer (Continuous Sound)** | 1 | 3–24V high-decibel audible indicator; allows the ESP32 to cleanly drive custom dual-frequency police siren sweeps without internal timing conflicts |
@@ -208,7 +217,7 @@ To achieve a clean optical baseline and prevent room lighting from flooding the 
 
 ```text
       +-----------------------------------------------------------------+
-      |                         ESP32 DEVKIT V1                         |
+      |                    ESP32-S3 DevKitC-1 N16R8                     |
       +-----------------------------------------------------------------+
         | GPIO 4 (ADC) | <-------> Pin 1: LDR  (R1 Sensor Output Node)
         | GPIO 18       | <-------- Pin 2: RST  (Reset Push Button SW1)
@@ -255,16 +264,43 @@ _Note: Powering the LDR network from the 3V3 rail protects the ESP32's 12-bit AD
 
 This project is built using PlatformIO IDE inside VS Code for robust environment management and smaller, compiled binary footprints.
 ### Project Environment Configuration (platformio.ini)
+
 ```Ini, TOML
 
-[env:esp32dev]
+; [env:esp32dev]
+; platform = espressif32
+; board = esp32dev
+; framework = arduino
+; monitor_speed = 115200
+
+; # PlatformIO automatically manages these dependencies!
+; lib_deps =
+;     bblanchon/ArduinoJson @ ^7.0.0
+
+[env:esp32-s3-devkitc-1]
 platform = espressif32
-board = esp32dev
+board = esp32-s3-devkitc-1
 framework = arduino
 monitor_speed = 115200
 
+# Force the compiler to disable PSRAM tracking to prevent boot panics
+build_flags = 
+    -DBOARD_HAS_PSRAM=0
+    -DARDUINO_USB_CDC_ON_BOOT=1
+
+# Specify LittleFS partitioning layout
+board_build.filesystem = littlefs
+
+# Standard partition table for an 8MB Flash device (No PSRAM)
+board_build.partitions = default_8MB.csv
+
 lib_deps =
-    bblanchon/ArduinoJson @ ^7.0.0
+    esphome/ESPAsyncWebServer-esphome @ ^3.2.2
+    knolleary/PubSubClient @ ^2.8
+
+# Tell PlatformIO to compile everything in src, EXCEPT the testing folder
+build_src_filter = +<*> -<testing/>
+
 ```
 ### Deployment Instructions
 
@@ -309,9 +345,12 @@ lib_deps =
 
 4. **Hardware Disarm**: While driving the siren frequencies, the controller actively checks `GPIO 18`. The exact microsecond your reset button is pressed (or your jumper wires touch), the system immediately mutes the buzzer, runs a fresh optical room calibration, and shifts smoothly back to active protection mode.
 
+
 <br>
 
-## ⚙️ Calibration & Environment Tuning
+
+## <span id="firmware">⚙️</span> Calibration & Environment Tuning
+
 
 The system features an automated **Optical Profiling Engine** on boot. To get the highest accuracy and avoid false alarms from ambient sunlight or room lamps, use the following deployment steps:
 
