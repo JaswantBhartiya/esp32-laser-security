@@ -543,7 +543,7 @@
     "last_paths": {
       "idf": "",
       "netlist": "",
-      "plot": "../production/Garber_file/",
+      "plot": "../SVJ/",
       "specctra_dsn": "",
       "vrml": "esp32-laser-security.wrl"
     },
