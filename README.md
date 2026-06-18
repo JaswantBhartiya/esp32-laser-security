@@ -111,6 +111,37 @@ The combined views show the mechanical shroud assembly bolted directly onto the 
 | Assembly Top View | Assembly Solder Side View |
 | :---: | :---: |
 | <img src="./assets/pcb_assembled_front.PNG" width="700"> | <img src="./assets/pcb_assembled_back.PNG" width="700"> |
+
+<br>
+
+---
+
+
+## 🔋 Power Setup
+
+The system uses **two separate power paths** to stop electrical noise from the laser from messing with the ESP32 and sensors.
+
+
+### ⚡ Path 1: ESP32 & Custom PCB
+Powers the main controller and sensor board.
+
+![ESP32 Power Layout](./images/esp32_pcb_power.png)
+
+* **Battery (18650)** ➔ **TP4056 Charger** (Safe charging)
+* **TP4056 Output** ➔ **Boost Converter** (Steps up voltage)
+* **Boost Converter (5V)** ➔ **ESP32 Pin (5V)** (Powers MCU)
+* **ESP32 Pin (3.3V)** ➔ **Custom PCB (J2)** (Powers LDR & LED)
+
+
+### 🔦 Path 2: Laser Transmitter
+Powers the laser module independently.
+
+![Laser Power Layout](./images/laser_power.png)
+
+* Runs on a clean, dedicated **3.3V line**.
+* Connects directly to the system ground for stable timing.
+* Keeps laser current draw completely isolated from the sensors.
+
 <br>
 
 ---
