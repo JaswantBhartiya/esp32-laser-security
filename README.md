@@ -132,6 +132,7 @@ Powers the main controller and sensor board.
 * **Boost Converter (5V)** ➔ **ESP32 Pin (5V)** (Powers MCU)
 * **ESP32 Pin (3.3V)** ➔ **Custom PCB (J2)** (Powers LDR & LED)
 
+<br>
 
 ### 🔦 Path 2: Laser Transmitter
 Powers the laser module independently.
