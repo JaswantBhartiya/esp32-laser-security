@@ -267,16 +267,6 @@ This project is built using PlatformIO IDE inside VS Code for robust environment
 
 ```Ini, TOML
 
-; [env:esp32dev]
-; platform = espressif32
-; board = esp32dev
-; framework = arduino
-; monitor_speed = 115200
-
-; # PlatformIO automatically manages these dependencies!
-; lib_deps =
-;     bblanchon/ArduinoJson @ ^7.0.0
-
 [env:esp32-s3-devkitc-1]
 platform = espressif32
 board = esp32-s3-devkitc-1
