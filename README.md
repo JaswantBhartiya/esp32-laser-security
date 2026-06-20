@@ -44,11 +44,11 @@ A professional, budget-friendly embedded security system built around a custom P
 
 ## <span id="demo">🚀</span> Key Features & Demo
 
-* **Wireless Perimeter Deployment:** Optimized for practical room scaling. The laser transmitter operates on its own isolated power rail across the room, completely eliminating the need to run long, messy signal lines back to the main controller.
-* **Multi-Bounce Optical Path:** Engineered to utilize low-cost, focusable red ($650\text{nm}$) or green ($532\text{nm}$) dot laser diodes. The concentrated beam cleanly sustains 4 to 5 glass mirror reflections across a room while maintaining a sharp focal point on the sensor.
-* **Smart Ambient Calibration:** On boot, the system automatically samples the room's ambient light level to calculate a dynamic trigger threshold. This ensures highly reliable tripwire detection during both bright daylight and dark nights without manual recalibration.
-* **Dual-State Status Indicators:** Utilizes an integrated Red-Green (RG) LED array—mirrored across both an onboard indicator (`D1`) and an external expansion header (`J1`)—providing instant visual feedback (**Green** for Armed, **Red** for Tripped).
-* **Hardware Interruption Reset:** Employs a debounced hardware polling engine on `GPIO 18`. Pressing the onboard tactile button (`SW1`) instantly silences the active buzzer, flushes the alarm registers, and re-arms the perimeter grid.
+* **Wireless Perimeter Design:** The laser operates on its own isolated battery across the room, eliminating long, messy signal lines back to the controller.
+* **Multi-Bounce Path:** Supports $650\text{nm}$ red or $532\text{nm}$ green lasers, holding a sharp focal point through 4 to 5 mirror reflections.
+* **Auto Ambient Calibration:** Samples room light on boot to calculate a dynamic trigger threshold, preventing false alarms from day to night.
+* **Dual-State LED Status:** Uses a Red-Green LED array (**Green** for Armed, **Red** for Tripped) mirrored on both the board and an external header.
+* **Hardware Reset Button:** A debounced button on `GPIO 18` instantly clears the alarm, silences the buzzer, and re-arms the system.
 
 <br>
 
@@ -139,18 +139,18 @@ Powers the main controller and sensor board.
 
 <br>
 
-### 🔦 Path 2: Laser Transmitter
-Powers the laser module independently.
+### 🔦 Path 2: Standalone Laser Transmitter Node
+Powers the laser module independently with zero physical connection to the main board.
 
 <div align="center">
-       <img src="./assets/laser_power.png" width="700" alt="Laser Power Layout">
+    <img src="./assets/laser_power.png" width="700" alt="Laser Power Layout">
 </div>
 
 <br>
 
-* Runs on a clean, dedicated **3.3V line**.
-* Connects directly to the system ground for stable timing.
-* Keeps laser current draw completely isolated from the sensors.
+* **100% Isolated:** No shared wires or common ground loops with the ESP32-S3.
+* **18650 Battery Powered:** Runs on its own 18650 cell (~3.7V) for maximum, long-lasting brightness.
+* **Manual Switch Control:** Uses an inline rocker switch to completely cut power and save battery when off.
 
 <br>
 
@@ -260,6 +260,8 @@ _Note: Powering the LDR network from the 3V3 rail protects the ESP32's 12-bit AD
 
 <br>
 
+---
+
 ## 💻 Software Configuration & Installation
 
 This project is built using PlatformIO IDE inside VS Code for robust environment management and smaller, compiled binary footprints.
@@ -292,6 +294,8 @@ lib_deps =
 build_src_filter = +<*> -<testing/>
 
 ```
+<br>
+
 ### Deployment Instructions
 
 1. Clone this repository to your local workspace:
@@ -308,66 +312,43 @@ build_src_filter = +<*> -<testing/>
 5. Open the **Serial Monitor** (`Ctrl + Alt + M`) at `115200` baud to watch the system run its initial calibration profiling.
 <br><br>
 
+---
+
 ## ⚙️ How System States Work
-```text
-       +------------------+
-       | STATE_CALIBRATING| <-------- On Boot / User Reset
-       +------------------+
-                 |
-                 v (Captures Max Beam Intensity & Computes Median)
-       +------------------+
-  +--->|   STATE_ARMED    |
-  |    +------------------+
-  |              |
-  |              v (LDR Reading drops below threshold for >50ms)
-  |    +------------------+
-  |    |  STATE_BREACHED  |
-  |    +------------------+
-  |              |
-  +--------------+ (GPIO 18 Shorted to GND / Reset Wired Activated)
-```
 
-1. **Optical Profiling (Boot)**: The system samples the active beam alignment over a 3-second window to capture maximum intensity. It then models a mathematical median trigger threshold exactly halfway between the direct laser strength and background ambient lighting.
-
-2. **Active Guard Mode**: The ESP32 continuously polls the internal 12-bit Analog-to-Digital Converter (`ADC1`). A software debounce filter requires the beam to be fully broken for more than `50ms` to prevent false alarms from flying bugs or floating dust.
-
-3. **Breached Alert Loop**: When triggered, the system shifts into a high-priority alert state. The ESP32 generates a non-blocking dual-tone police siren sweep pattern (`800Hz` to `1300Hz`) using microseconds delay-toggling on `GPIO 5`.
-
-4. **Hardware Disarm**: While driving the siren frequencies, the controller actively checks `GPIO 18`. The exact microsecond your reset button is pressed (or your jumper wires touch), the system immediately mutes the buzzer, runs a fresh optical room calibration, and shifts smoothly back to active protection mode.
-
+* **Boot Calibration:** Samples the laser beam for 3 seconds to calculate a dynamic trigger threshold between direct laser light and ambient room light.
+* **Active Guard:** Continuously samples the LDR. Requires the beam to be broken for over `50ms` to filter out false alarms from dust or bugs.
+* **Breached Alert:** Plays a dual-tone siren sweep ($800\text{Hz}$ to $1300\text{Hz}$) on `GPIO 5` using non-blocking microsecond delays.
+* **Hardware Reset:** Actively polls `GPIO 18`. Pressing the reset button instantly mutes the buzzer and recalibrates the system back to Armed mode.
 
 <br>
 
+---
 
-## <span id="firmware">⚙️</span> Calibration & Environment Tuning
+## ⚙️ Calibration & Environment Tuning
 
+### 🛠️ Quick Alignment Guide
 
-The system features an automated **Optical Profiling Engine** on boot. To get the highest accuracy and avoid false alarms from ambient sunlight or room lamps, use the following deployment steps:
+1. **Align:** Aim the laser dot directly into the center of the LDR shroud.
+2. **Calibrate:** Power on or reset the ESP32. Keep the laser path completely clear for the first **3 seconds**.
+3. **Calculate:** The firmware auto-sets the trigger threshold using a simple median formula:
 
+$$\text{Threshold} = \frac{\text{Laser Intensity} + \text{Ambient Light}}{2}$$
 
+4. **Verify:** Block the beam with your hand to test that it instantly triggers the alarm.
 
-### 🛠️ Step-by-Step Alignment Guide
-1. **Physical Alignment:** Position your mirrors and aim your laser dot until it lands cleanly inside the center entry corridor of the 3D-printed LDR shroud.
-2. **Boot Calibration:** Power on or reset the ESP32 via `SW1`. Keep the laser path completely unobstructed for the first **3 seconds**. 
-3. **Threshold Calculation:** The firmware samples the peak light intensity and dynamically sets a software trigger threshold using a mathematical median:
-   
-   $$\text{Threshold} = \frac{\text{Laser Light Intensity} + \text{Ambient Background Light}}{2}$$
-
-4. **Verification:** Open your PlatformIO Serial Monitor (`115200` baud). You will see the baseline values printed out. Block the beam with your hand to verify the system instantly transitions to `STATE_BREACHED`.
-
+<br>
 
 ### 🔍 Ambient Light Troubleshooting
 
-If you are deploying the system in environments with highly unpredictable lighting (e.g., near windows with moving sunlight), use this quick matrix to tune your setup:
-
-| Issue | Root Cause | Practical Fix |
+| Issue | Root Cause | Quick Fix |
 | :--- | :--- | :--- |
-| **System instantly triggers on boot** | Laser beam missed the LDR corridor during the 3-second calibration window. | Tap the `SW1` Reset button to rerun the calibration loop *after* double-checking your mirror alignment. |
-| **Beam is broken, but no alarm sounds** | High ambient room light is bleeding into the shroud, keeping the LDR resistance artificially low. | 1. Move the laser setup away from direct windows.<br>2. Increase the internal length of your 3D shroud corridor in CAD to block side-glare. |
-| **Siren flickers on and off rapidly** | The laser dot is hovering right on the edge of the LDR opening, causing minor vibration jitter. | Tighten the M3 mounting fasteners on your mechanical shroud to ensure a rigid optical line. |
+| **Instant alarm on boot** | Laser missed the LDR during calibration. | Re-align the laser and press the reset button to recalibrate. |
+| **Beam broken, no alarm** | Side-glare or ambient room light is bleeding into the sensor. | Move away from windows or use a longer 3D-printed shroud to block ambient light. |
+| **Siren flickers/jitters** | Laser dot is slightly misaligned or vibrating on the edge of the sensor. | Tighten your laser/mirror mounts to eliminate physical jitter. |
 
 <br>
-To see the planned industrial-grade protection sub-circuits, noise filters, and RF layout optimizations mapped out for the next board revision, check out the development logs:
+
 ---
 
 ## 🚀 Hardware Evolution & Development
