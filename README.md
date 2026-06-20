@@ -17,7 +17,7 @@
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript">
   <img src="https://img.shields.io/badge/ESP32--S3-E7352C?style=flat-square&logo=espressif&logoColor=white" alt="ESP32-S3">
   <img src="https://img.shields.io/badge/KiCad-1A2C56?style=flat-square&logo=kicad&logoColor=white" alt="KiCad">
-  <img src="https://img.shields.io/badge/Fritzing-DF5B57?style=flat-square&logo=fritzing&logoColor=white" alt="Fritzing">
+  <img src="https://img.shields.io/badge/Fritzing-DF5B57?style=flat-square&logo=fritzing&logoColor=white" alt="Fritzing"> 
   <img src="https://img.shields.io/badge/SolidWorks-DC143C?style=flat-square&logo=dassaultsystemes&logoColor=white" alt="SolidWorks">
   <img src="https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black" alt="Linux">
   <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License">
