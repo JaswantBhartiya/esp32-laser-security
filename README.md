@@ -316,6 +316,26 @@ build_src_filter = +<*> -<testing/>
 
 ## ⚙️ How System States Work
 
+```text
+  
+           +------------------+
+           | STATE_CALIBRATING| <-------- On Boot / User Reset
+           +------------------+
+                     |
+                     v (Samples light & computes threshold)
+           +------------------+
+      +--->|   STATE_ARMED    |
+      |    +------------------+
+      |              |
+      |              v (Beam broken for >50ms)
+      |    +------------------+
+      |    |  STATE_BREACHED  |
+      |    +------------------+
+      |              |
+      +--------------+ (Reset Button Pressed)
+
+```
+
 * **Boot Calibration:** Samples the laser beam for 3 seconds to calculate a dynamic trigger threshold between direct laser light and ambient room light.
 * **Active Guard:** Continuously samples the LDR. Requires the beam to be broken for over `50ms` to filter out false alarms from dust or bugs.
 * **Breached Alert:** Plays a dual-tone siren sweep ($800\text{Hz}$ to $1300\text{Hz}$) on `GPIO 5` using non-blocking microsecond delays.
