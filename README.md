@@ -117,8 +117,14 @@ The combined views show the mechanical shroud assembly bolted directly onto the 
 
 ---
 
-
+ 
 ## 🔋 Power Setup
+
+<details>
+  
+<summary><b>Click to Expand | Power Setup for two Paths</b></summary>
+
+<br>
 
 The system uses **two separate power paths** to stop electrical noise from the laser from messing with the ESP32 and sensors.
 
@@ -152,7 +158,10 @@ Powers the laser module independently with zero physical connection to the main 
 * **18650 Battery Powered:** Runs on its own 18650 cell (~3.7V) for maximum, long-lasting brightness.
 * **Manual Switch Control:** Uses an inline rocker switch to completely cut power and save battery when off.
 
+</details> 
+
 <br>
+
 
 ---
 
