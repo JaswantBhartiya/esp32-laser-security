@@ -52,6 +52,21 @@ A professional, budget-friendly embedded security system built around a custom P
 
 <br>
 
+### 🖥️ Live Web UI Dashboard
+The system hosts a real-time responsive dashboard providing live telemetry, node statuses, and toggle configurations.
+
+<div align="center">
+  <img src="./assets/webui_dashboard.png" width="850" alt="Security Matrix Core Web UI">
+</div>
+
+#### 🌐 Robust 6-Way Connection Matrix
+To guarantee fail-safe alerts and zero telemetry loss, the firmware maintains six independent network connections across local and global layers:
+* **Wi-Fi Link Status:** Dual-channel monitoring covering your local gateway routing (`HTTP-Local`) and direct internet access (`HTTP-Router`).
+* **MQTT Brokers:** Redundant pub/sub data streams routed concurrently to an offline network broker (`MQTT-Local`) and a remote cloud cluster (`MQTT-Cloud`).
+* **Ntfy Push Alerts:** High-priority notification pipelines feeding instant breach logs via a self-hosted instance (`NTFY-Local`) and a global web server (`NTFY-Global`).
+
+<br>
+
 ---
 
 ## <span id="hardware">🛠️</span> Hardware Design
