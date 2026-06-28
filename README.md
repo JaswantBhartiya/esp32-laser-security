@@ -59,7 +59,7 @@ The system hosts a real-time responsive dashboard providing live telemetry, node
 
 | Central Telemetry Instrumentation | Edge Sensor Matrix Nodes |
 | :---: | :---: |
-| <img src="./assets/gauge_closeup.png" width="380" alt="Radial Gauge"> | <img src="./assets/nodes_closeup.png" width="380" alt="Sensor Status Toggles"> |
+| <img src="./assets/gauge_closeup.png" width="700" alt="Radial Gauge"> | <img src="./assets/nodes_closeup.png" width="700" alt="Sensor Status Toggles"> |
 
 #### 🌐 Robust 6-Way Connection Matrix
 To guarantee fail-safe alerts and zero telemetry loss, the firmware maintains six independent network connections across local and global layers:
